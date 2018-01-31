@@ -18,7 +18,7 @@ public class BinarySearchTreeTester {
         assertEquals(-1, tree.depth());
         assertEquals("[]", tree.toString());
     }
-/*
+
 
     @Before
     public void setUp() throws Exception {
@@ -51,7 +51,7 @@ public class BinarySearchTreeTester {
     public void testToString() {
         assertEquals("[1, 2, 3, 4, 5, 6]", tree.toString());
     }
-
+/*
     @Test
     public void testAddDuplicates() {
         for (int n = 1; n <= 6; n += 2)
