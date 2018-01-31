@@ -18,7 +18,7 @@ public class BinarySearchTreeTester {
         assertEquals(-1, tree.depth());
         assertEquals("[]", tree.toString());
     }
-
+/*
 
     @Before
     public void setUp() throws Exception {
@@ -128,5 +128,5 @@ public class BinarySearchTreeTester {
         stringTree.remove("C");
         assertFalse(stringTree.contains("C"));
     }
-
+*/
 }
