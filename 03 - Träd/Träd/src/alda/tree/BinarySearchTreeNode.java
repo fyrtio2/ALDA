@@ -47,11 +47,40 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     }
 
     private T findMin() {
-        return null;
+        return findMin(this);
+    }
+
+    private T findMin(BinarySearchTreeNode<T> n) {
+        if(n == null)
+            return null;
+        else if(n.left == null)
+            return n.data;
+        return findMin(n.left);
     }
 
     public BinarySearchTreeNode<T> remove(T data) {
-        return null;
+        return remove(this, data);
+
+    }
+
+    private BinarySearchTreeNode<T> remove(BinarySearchTreeNode<T> n, T data) {
+        if (n == null) {
+            return null;
+        }
+
+        int compare = n.data.compareTo(data);
+
+        if (compare > 0) {
+            n.left = remove(n.left, data);
+        } else if (compare < 0) {
+            n.right = remove(n.right, data);
+        } else if (n.left != null && n.right != null) {
+            n.data = findMin(n.right);
+            n.right = remove(n.right, n.data);
+        } else {
+            n = (n.left != null) ? n.left : n.right;
+        }
+        return n;
     }
 
     public boolean contains(T data) {
@@ -96,7 +125,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     public String toString() {
         StringBuilder str = new StringBuilder();
         toString(str,this);
-        return str.toString();
+        return str.toString().substring(0, str.length()-2);
     }
 
     private String toString(StringBuilder str, BinarySearchTreeNode<T> n) {
@@ -104,7 +133,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
             return "";
         }
         str.append(toString(str, n.left));
-        str.append(n.data);
+        str.append(n.data + ", ");
         str.append(toString(str, n.right));
         return "";
 
