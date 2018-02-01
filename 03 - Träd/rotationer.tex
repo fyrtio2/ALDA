@@ -62,11 +62,13 @@
 \includegraphics[scale=0.2]{emiBefore}
 \includegraphics[scale=0.3]{emiAfter}
 
+
 Vi börjar med att lägga till ett $e$ följt av ett $m$ utan problem. När vi sedan lägger till ett i stöter vi på ett problem och det sker en enkel rotation. När $i$ läggs till hamnar den förs till vänster i $m$ noden vilket gör att det blir obalans. För att bli av med obalansen flyttas i upp ett steg och blir rotnoden. Eftersom e kommer före i så läggs $e$ till vänster bland barnnoderna och $m$ som kommer efter i läggs till höger. 
 
 \includegraphics[scale=0.45]{emilr}
 \includegraphics[scale=0.25]{emilroBefore}
 \includegraphics[scale=0.25]{emilroAfter}
 
-Vi kan sedan lägga till $l$ och $r$ utan problem, men när vi lägger till $o$ får vi obalans.
+Vi kan sedan lägga till $l$ och$r$ utan problem, men när vi lägger till $o$ får vi obalans. Det sker då en enkel rotation för att lösa problemet som har uppstått. Det som händer är att $m$ roteras upp och blir rotnod, $i$ flyttas ner till vänster eftersom $i$ kommer före $m$, $e$ är kvar som vänster barnnod till $i$, $l$ blir till höger barnnod hos i eftersom $l$ kommer före $i$ men efter $m$. 
+
 \end{document}
