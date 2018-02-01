@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.15)  1 FEB 2018 20:38
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.15)  1 FEB 2018 20:33
+>>>>>>> 41815ccd4015c1aeac9b9e889760176dcdcd7bfb
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -629,80 +633,85 @@ File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 <em.pdf, id=6, 119.44624pt x 128.48pt>
 File: em.pdf Graphic file (type pdf)
  <use em.pdf>
-Package pdftex.def Info: em.pdf used on input line 60.
+Package pdftex.def Info: em.pdf used on input line 64.
 (pdftex.def)             Requested size: 83.61179pt x 89.93538pt.
 
 <emiBefore.pdf, id=7, 343.2825pt x 391.4625pt>
 File: emiBefore.pdf Graphic file (type pdf)
  <use emiBefore.pdf>
-Package pdftex.def Info: emiBefore.pdf used on input line 61.
+Package pdftex.def Info: emiBefore.pdf used on input line 65.
 (pdftex.def)             Requested size: 68.65527pt x 78.2911pt.
 
 <emiAfter.pdf, id=8, 307.1475pt x 297.11pt>
 File: emiAfter.pdf Graphic file (type pdf)
  <use emiAfter.pdf>
-Package pdftex.def Info: emiAfter.pdf used on input line 62.
+Package pdftex.def Info: emiAfter.pdf used on input line 66.
 (pdftex.def)             Requested size: 92.14496pt x 89.13368pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 68.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 68.
+Package babel Info: Redefining swedish shorthand "|
+(babel)             in language  on input line 69.
+Package babel Info: Redefining swedish shorthand "~
+(babel)             in language  on input line 69.
+Package babel Info: Redefining swedish shorthand "|
+(babel)             in language  on input line 69.
+Package babel Info: Redefining swedish shorthand "~
+(babel)             in language  on input line 69.
+ [1
 
-<emilr.pdf, id=9, 184.69pt x 171.64125pt>
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./em.pd
+f> <./emiBefore.pdf> <./emiAfter.pdf>] <emilr.pdf, id=28, 184.69pt x 171.64125p
+t>
 File: emilr.pdf Graphic file (type pdf)
- <use emilr.pdf>
-Package pdftex.def Info: emilr.pdf used on input line 66.
+
+<use emilr.pdf>
+Package pdftex.def Info: emilr.pdf used on input line 70.
 (pdftex.def)             Requested size: 83.10971pt x 77.23784pt.
-
-<emilroBefore.pdf, id=10, 431.6125pt x 469.755pt>
+ <emilroBefore.pdf, id=29, 431.6125pt x 469.755pt>
 File: emilroBefore.pdf Graphic file (type pdf)
- <use emilroBefore.pdf>
-Package pdftex.def Info: emilroBefore.pdf used on input line 67.
-(pdftex.def)             Requested size: 107.90285pt x 117.43846pt.
 
-<emilroAfter.pdf, id=11, 453.695pt x 385.44pt>
+<use emilroBefore.pdf>
+Package pdftex.def Info: emilroBefore.pdf used on input line 71.
+(pdftex.def)             Requested size: 107.90285pt x 117.43846pt.
+ <emilroAfter.pdf, id=30, 453.695pt x 385.44pt>
 File: emilroAfter.pdf Graphic file (type pdf)
- <use emilroAfter.pdf>
-Package pdftex.def Info: emilroAfter.pdf used on input line 68.
+
+<use emilroAfter.pdf>
+Package pdftex.def Info: emilroAfter.pdf used on input line 72.
 (pdftex.def)             Requested size: 113.42346pt x 96.35976pt.
 
-Overfull \hbox (47.87938pt too wide) in paragraph at lines 66--69
+Overfull \hbox (47.87938pt too wide) in paragraph at lines 70--73
 [][] [] [] 
  []
 
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 75.
 Package babel Info: Redefining swedish shorthand "|
-(babel)             in language  on input line 70.
+(babel)             in language  on input line 75.
 Package babel Info: Redefining swedish shorthand "~
-(babel)             in language  on input line 70.
+(babel)             in language  on input line 75.
 Package babel Info: Redefining swedish shorthand "|
-(babel)             in language  on input line 70.
+(babel)             in language  on input line 75.
 Package babel Info: Redefining swedish shorthand "~
-(babel)             in language  on input line 70.
-[1
-
-{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./em.pd
-f> <./emiBefore.pdf> <./emiAfter.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 71.
-Package babel Info: Redefining swedish shorthand "|
-(babel)             in language  on input line 71.
-Package babel Info: Redefining swedish shorthand "~
-(babel)             in language  on input line 71.
-Package babel Info: Redefining swedish shorthand "|
-(babel)             in language  on input line 71.
-Package babel Info: Redefining swedish shorthand "~
-(babel)             in language  on input line 71.
- [2 <./emilr.pdf> <./emilroBefore.pdf> <./emilroAfter.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
+(babel)             in language  on input line 75.
+[2 <./emilr.pdf> <./emilroBefore.pdf> <./emilroAfter.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 75.
  (./rotationer.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 75.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 75.
 Package rerunfilecheck Info: File `rotationer.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 75.
  ) 
 Here is how much of TeX's memory you used:
- 7590 strings out of 492995
- 108427 string characters out of 6132704
+ 7593 strings out of 492995
+ 108465 string characters out of 6132704
  200163 words of memory out of 5000000
- 11055 multiletter control sequences out of 15000+600000
+ 11057 multiletter control sequences out of 15000+600000
  10527 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
+<<<<<<< HEAD
  28i,7n,40p,465b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
 </usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></
@@ -711,9 +720,20 @@ r/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/
 local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/lo
 cal/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
 Output written on rotationer.pdf (2 pages, 140205 bytes).
+=======
+ 28i,7n,40p,479b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></u
+sr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr
+/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/l
+ocal/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/loc
+al/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on rotationer.pdf (2 pages, 151463 bytes).
+>>>>>>> 41815ccd4015c1aeac9b9e889760176dcdcd7bfb
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 33 compressed objects within 1 object stream
- 4 named destinations out of 1000 (max. 500000)
+ 64 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
+ 5 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
