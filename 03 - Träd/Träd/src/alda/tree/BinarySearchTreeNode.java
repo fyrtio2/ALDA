@@ -1,6 +1,13 @@
 package alda.tree;
 
 /**
+ *
+ * Oscar Törnquist  - osta3589
+ * Emil Rosell      - emro9957
+ *
+ */
+
+/**
  * Detta är den enda av de tre klasserna ni ska göra några ändringar i. (Om ni
  * inte vill lägga till fler testfall.) De ändringar som är tillåtna är dock
  * begränsade av följande:
