@@ -27,6 +27,7 @@
 \usepackage{ifthen}
 \usepackage{listings}	
 
+
 % These two lines set up options for the listings package and
 % can be removed if you don't use it, or changed if you, e.g, 
 % use another language than Java. 
@@ -56,19 +57,21 @@
 \begin{document}
 \maketitle
 
+\section*{Enkelrotationer}
+
+\includegraphics[scale=0.4]{em}
+\includegraphics[scale=0.4]{emiBefore}
+\includegraphics[scale=0.5]{emiAfter}
+
+Enkelrotationer är den mindre komplexa rotationssorten för AVL-träd. När en en nod har subträd som vars djup skiljer sig med mer än ett behövs det balanseras upp vilket är rotationernas jobb. För att börja med ett simpelt exempel så har vi använt oss av bokstäverna $E, I $ och $M$. Vi börjar med att lägga till roten i det binära sökträdet, i det här fallet är det ett $E$, därefter lägger vi till ett $I$ som är större än $E$ och läggs därför till höger i ett subträd till roten. Om vi sen ska lägga till ett $M$ till trädet så är det större än båda noderna som tidigare lagts till vilket betyder att $M$'et läggs till som ett barn till noden $I$. När kontrollen sen sker om balansen upprätthålls så börjar kontrollen i den noden som senast lades till, kontrollen förflyttas till föräldern till den tidigare noden och upptäcker att det högra subträdet har djupet 1 medans det vänsta har djupet 0 vilket är fullt tillåtet då skillnaden inte får vara större än 1. När kontrollen sen kommer upp till roten så kontrolleras subträden och skillnaden är då mer än 1, närmare bestämt är djupet på vänstra subträdet 0 och högra 2. För att åtgärda balansen i trädet så flyttas noden till höger om roten, i detta fall $I$, ett steg åt vänster. Den tidigare roten är nu en barnnod till noden som tidigare låg som ett barn i höger subträd. Enkelrotationen har löst balansen med ett steg där obalansen låg i roten. 
+
+\includegraphics[scale=0.3]{advEnk}
+\includegraphics[scale=0.3]{advEnkB}
+\includegraphics[scale=0.3]{advEnkA}
+
+Enkelrotationer är dock något som inte bara används av rotnoden i trädet utan kan användas av noter som ligger längre ner också. Nästa exempel visar när en enkelrotation sker på ett annat djup än rotens djup. I den första bilden ovanför detta stycke så har vi ett träd av bokstäverna \textit{O-S-C-A-R-T-U}. Den andra bilden visar hur ett $Ö$ läggs till i trädet och när balansen kontrolleras så uppstår det en obalans redan vid $T$-noden. Där är det återigen en skillnad som är större än 1 mellan det högra subträdet och det vänstra, vilket då behöver balanseras med hjälp av enkelrotationen. Sista bilden visar att $U$ flyttar upp ett steg, $T$ läggs som vänstra barnet till $U$ då $T < U$ och $Ö$ hänger bara på när $U$ flyttas upp. 
+
 \section*{Dubbelrotationer}
 
-\includegraphics[scale=0.7]{em}
-\includegraphics[scale=0.2]{emiBefore}
-\includegraphics[scale=0.3]{emiAfter}
-
-
-Vi börjar med att lägga till ett $e$ följt av ett $m$ utan problem. När vi sedan lägger till ett i stöter vi på ett problem och det sker en enkel rotation. När $i$ läggs till hamnar den förs till vänster i $m$ noden vilket gör att det blir obalans. För att bli av med obalansen flyttas i upp ett steg och blir rotnoden. Eftersom e kommer före i så läggs $e$ till vänster bland barnnoderna och $m$ som kommer efter i läggs till höger. 
-
-\includegraphics[scale=0.45]{emilr}
-\includegraphics[scale=0.25]{emilroBefore}
-\includegraphics[scale=0.25]{emilroAfter}
-
-Vi kan sedan lägga till $l$ och $r$ utan problem, men när vi lägger till $o$ får vi obalans. Det sker då en enkel rotation för att lösa problemet som har uppstått. Det som händer är att $m$ roteras upp och blir rotnod, $i$ flyttas ner till vänster eftersom $i$ kommer före $m$, $e$ är kvar som vänster barnnod till $i$, $l$ blir till höger barnnod hos i eftersom $l$ kommer före $i$ men efter $m$, $r$ är kvar som höger barnnod till $m$ då $r$ kommer efter $m$, och $o$ blir vänster barnnod till $r$ eftersom o kommer före $r$ men efter $m$.
 
 \end{document}
