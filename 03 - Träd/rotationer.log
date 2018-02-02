@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.15)  2 FEB 2018 13:17
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.15)  2 FEB 2018 13:02
->>>>>>> d712606fe5d9b0a3f98ea6a837c25684f15fa408
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2018.1.15)  2 FEB 2018 13:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -686,6 +682,26 @@ Overfull \hbox (66.25182pt too wide) in paragraph at lines 68--71
 [][] [] [] 
  []
 
+
+LaTeX Warning: Command \" invalid in math mode on input line 72.
+
+Missing character: There is no Ö in font cmr10!
+
+LaTeX Warning: Command \" invalid in math mode on input line 72.
+
+Missing character: There is no Ö in font cmr10!
+
+LaTeX Warning: Command \" invalid in math mode on input line 72.
+
+Missing character: There is no Ö in font cmr10!
+
+LaTeX Warning: Command \" invalid in math mode on input line 72.
+
+Missing character: There is no Ö in font cmr10!
+
+LaTeX Warning: Command \" invalid in math mode on input line 72.
+
+Missing character: There is no Ö in font cmr10!
 Package babel Info: Redefining swedish shorthand "|
 (babel)             in language  on input line 73.
 Package babel Info: Redefining swedish shorthand "~
@@ -746,7 +762,7 @@ sr/local/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr
 ocal/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/loc
 al/texlive/2017/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local
 /texlive/2017/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on rotationer.pdf (3 pages, 260900 bytes).
+Output written on rotationer.pdf (3 pages, 261682 bytes).
 PDF statistics:
  73 PDF objects out of 1000 (max. 8388607)
  42 compressed objects within 1 object stream
