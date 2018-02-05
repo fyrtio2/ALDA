@@ -47,7 +47,7 @@ public class DHeapTester {
      * den är inte viktig för uppgiften, så plocka bort den om ni inte absolut
      * vill fixa den också.
      */
-    /*
+
     @Test
     public void testConstructors() {
         heap = new DHeap<Integer>();  // Skapar en binär heap
@@ -67,7 +67,7 @@ public class DHeapTester {
      * uppgiften, så om ni vill kan ni strunta i testet. Det är dock inget vi
      * rekommenderar eftersom metoden gör problemet lättare att lösa.
      */
-    /*
+
     @Test
     public void testParentIndex() {
         assertEquals(5, heap.parentIndex(18));
@@ -93,7 +93,7 @@ public class DHeapTester {
      * Även detta test förutsätter att ni gör en metod för att räkna ut
      * förälderns index och kan ignorerars om ni inte gör det.
      */
-    /*
+
     @Test(expected = IllegalArgumentException.class)
     public void testTooLowParentIndex() {
         heap.parentIndex(1);
@@ -105,7 +105,7 @@ public class DHeapTester {
      * uppgiften, så om ni vill kan ni strunta i testet. Det är dock inget vi
      * rekommenderar eftersom metoden gör problemet lättare att lösa.
      */
-    /*
+
     @Test
     public void testFirstChildIndex() {
         assertEquals(2, heap.firstChildIndex(1));
@@ -130,7 +130,7 @@ public class DHeapTester {
      * Även detta test förutsätter att ni gör en metod för att räkna ut det
      * första barnets index och kan ignoreras om ni inte gör det.
      */
-    /*
+
     @Test(expected = IllegalArgumentException.class)
     public void testTooLowChildIndex() {
         heap.firstChildIndex(0);
@@ -155,7 +155,7 @@ public class DHeapTester {
      *
      * AnyType get(int index){ return array[index]; }
      */
-    /*
+
 
     @Test
     public void testContent() {
@@ -190,5 +190,5 @@ public class DHeapTester {
         assertEquals(5, (int) heap.deleteMin());
         testValues(10, 17, 70, 12, 100, 51, 52, 23);
     }
-*/
+
 }

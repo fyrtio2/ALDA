@@ -1,6 +1,13 @@
 // Klassen i denna fil måste döpas om till DHeap för att testerna ska fungera. 
 package alda.heap;
 
+/**
+ *
+ * DHeap
+ * @author Oscar Törnquist  - osta3589
+ * @author Emil Rosell      - emro9957
+ */
+
 //DHeap class
 //
 //CONSTRUCTION: with optional capacity (that defaults to 100)
@@ -24,52 +31,32 @@ package alda.heap;
  */
 public class DHeap<AnyType extends Comparable<? super AnyType>> {
     private static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_NUMBER_OF_CHILDRENS = 2;
     private int currentSize;      // Number of elements in heap
     private AnyType[] array; // The heap array
+    private int noOfChildren;
 
     /**
      * Construct the binary heap.
      */
     public DHeap() {
-        this(DEFAULT_CAPACITY);
+        this(DEFAULT_NUMBER_OF_CHILDRENS);
     }
 
 
     /**
-     * Construct the binary heap.
-     *
-     * @param capacity the capacity of the binary heap.
+     * Returnerar IllegalArgumentException om children < 2.
+     * Annars sätts storleken till 0 och noOfChildren till argumentet children i konstruktorn
      */
-    public DHeap(int capacity) {
+    public DHeap(int children) {
+        if (children < DEFAULT_NUMBER_OF_CHILDRENS) {
+            throw new IllegalArgumentException("heap to small");
+        }
+        noOfChildren = children;
         currentSize = 0;
-        array = (AnyType[]) new Comparable[capacity + 1];
+        array = (AnyType[]) new Comparable[DEFAULT_CAPACITY + 1];
     }
 
-    /**
-     * Construct the binary heap given an array of items.
-     */
-    public DHeap(AnyType[] items) {
-        currentSize = items.length;
-        array = (AnyType[]) new Comparable[(currentSize + 2) * 11 / 10];
-
-        int i = 1;
-        for (AnyType item : items)
-            array[i++] = item;
-        buildHeap();
-    }
-
-    // Test program
-    public static void main(String[] args) {
-        int numItems = 10000;
-        DHeap<Integer> h = new DHeap<>();
-        int i = 37;
-
-        for (i = 37; i != 0; i = (i + 37) % numItems)
-            h.insert(i);
-        for (i = 1; i < numItems; i++)
-            if (h.deleteMin() != i)
-                System.out.println("Oops! " + i);
-    }
 
     /**
      * Insert into the priority queue, maintaining heap order.
@@ -83,8 +70,8 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
 
         // Percolate up
         int hole = ++currentSize;
-        for (array[0] = x; x.compareTo(array[hole / 2]) < 0; hole /= 2)
-            array[hole] = array[hole / 2];
+        for (;hole > 1 && x.compareTo(array[parentIndex(hole)]) < 0; hole = parentIndex(hole))
+            array[hole] = array[parentIndex(hole)];
         array[hole] = x;
     }
 
@@ -167,5 +154,27 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
                 break;
         }
         array[hole] = tmp;
+    }
+
+    public int parentIndex(int i) {
+        if (i < 2) {
+            throw new IllegalArgumentException();
+        }
+        return (i - 2) / noOfChildren + 1;
+    }
+
+    public int firstChildIndex(int i) {
+        if (i < 1) {
+            throw new IllegalArgumentException();
+        }
+        return (i -1) * noOfChildren + 2;
+
+    }
+
+    public int size() {
+        return currentSize;
+    }
+    public AnyType get(int index){
+        return array[index];
     }
 }
