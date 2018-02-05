@@ -21,10 +21,6 @@ package alda.tree;
  * @param <T>
  * @author henrikbe
  */
-@SuppressWarnings("unused") // Denna rad ska plockas bort. Den finns här
-// tillfälligt för att vi inte ska tro att det är
-// fel i koden. Varningar ska normalt inte döljas på
-// detta sätt, de är (oftast) fel som ska fixas.
 public class BinarySearchTreeNode<T extends Comparable<T>> {
 
     private T data;
