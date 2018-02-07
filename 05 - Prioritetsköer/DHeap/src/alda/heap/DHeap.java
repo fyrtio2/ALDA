@@ -23,6 +23,8 @@ package alda.heap;
 // RRORS********************************
 //Throws UnderflowException as appropriate
 
+import java.util.Arrays;
+
 /**
  * Implements a binary heap.
  * Note that all "matching" is based on the compareTo method.
@@ -70,8 +72,9 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
 
         // Percolate up
         int hole = ++currentSize;
-        for (;hole > 1 && x.compareTo(array[parentIndex(hole)]) < 0; hole = parentIndex(hole))
+        for (;hole > 1 && x.compareTo(array[parentIndex(hole)]) < 0; hole = parentIndex(hole)) {
             array[hole] = array[parentIndex(hole)];
+        }
         array[hole] = x;
     }
 
@@ -132,6 +135,7 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
      */
     public void makeEmpty() {
         currentSize = 0;
+        array =  (AnyType[]) new Comparable[DEFAULT_CAPACITY + 1];
     }
 
     /**
@@ -143,11 +147,17 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
         int child;
         AnyType tmp = array[hole];
 
-        for (; hole * 2 <= currentSize; hole = child) {
-            child = hole * 2;
-            if (child != currentSize &&
-                    array[child + 1].compareTo(array[child]) < 0)
-                child++;
+        for (; firstChildIndex(hole) <= currentSize; hole = child) {
+
+
+            child = firstChildIndex(hole);
+
+            for (int i = 0; i < noOfChildren; i++) {
+                if (child + i <= currentSize && array[firstChildIndex(hole) + i].compareTo(array[child]) < 0) {
+                    child = firstChildIndex(hole) + i;
+                }
+            }
+
             if (array[child].compareTo(tmp) < 0)
                 array[hole] = array[child];
             else
@@ -156,14 +166,16 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
         array[hole] = tmp;
     }
 
-    public int parentIndex(int i) {
+
+
+    int parentIndex(int i) {
         if (i < 2) {
             throw new IllegalArgumentException();
         }
         return (i - 2) / noOfChildren + 1;
     }
 
-    public int firstChildIndex(int i) {
+    int firstChildIndex(int i) {
         if (i < 1) {
             throw new IllegalArgumentException();
         }
@@ -176,5 +188,23 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
     }
     public AnyType get(int index){
         return array[index];
+    }
+
+    public static void main(String[] args) {
+        DHeap<Integer> heap = new DHeap<>(3);
+        heap.insert(10);
+      //  System.out.println(Arrays.toString(heap.array));
+        heap.insert(20);
+        //System.out.println(Arrays.toString(heap.array));
+        heap.insert(15);
+        //System.out.println(Arrays.toString(heap.array));
+        heap.insert(59);
+        //System.out.println(Arrays.toString(heap.array));
+        heap.insert(13);
+        //System.out.println(Arrays.toString(heap.array));
+        heap.deleteMin();
+        //System.out.println(Arrays.toString(heap.array));
+        heap.deleteMin();
+        //System.out.println(Arrays.toString(heap.array));
     }
 }
