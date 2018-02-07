@@ -192,15 +192,14 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
         if (i < 2) {
             throw new IllegalArgumentException();
         }
-        //return (i + noOfChildren -2) / noOfChildren;
-        return (i - 2) / noOfChildren + 1;
+        return (i + noOfChildren -2) / noOfChildren;
+
     }
 
     int firstChildIndex(int i) {
         if (i < 1) {
             throw new IllegalArgumentException();
         }
-        //return (i -1) * noOfChildren + 2;
         return i * noOfChildren - (noOfChildren - 2);
 
     }
@@ -212,21 +211,4 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
         return array[index];
     }
 
-    public static void main(String[] args) {
-        DHeap<Integer> heap = new DHeap<>(3);
-        heap.insert(10);
-      //  System.out.println(Arrays.toString(heap.array));
-        heap.insert(20);
-        //System.out.println(Arrays.toString(heap.array));
-        heap.insert(15);
-        //System.out.println(Arrays.toString(heap.array));
-        heap.insert(59);
-        //System.out.println(Arrays.toString(heap.array));
-        heap.insert(13);
-        //System.out.println(Arrays.toString(heap.array));
-        heap.deleteMin();
-        //System.out.println(Arrays.toString(heap.array));
-        heap.deleteMin();
-        //System.out.println(Arrays.toString(heap.array));
-    }
 }
