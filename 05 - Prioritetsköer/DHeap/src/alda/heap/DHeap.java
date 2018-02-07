@@ -69,13 +69,21 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
     public void insert(AnyType x) {
         if (currentSize == array.length - 1)
             enlargeArray(array.length * 2 + 1);
-
-        // Percolate up
-        int hole = ++currentSize;
-        for (;hole > 1 && x.compareTo(array[parentIndex(hole)]) < 0; hole = parentIndex(hole)) {
-            array[hole] = array[parentIndex(hole)];
+        if (currentSize == 0) {
+            array[1] = x;
+            currentSize++;
+        } else {
+            // Percolate up
+            int hole = ++currentSize;
+            for (;x.compareTo(array[parentIndex(hole)]) < 0; hole = parentIndex(hole)) {
+                array[hole] = array[parentIndex(hole)];
+                if (parentIndex(hole) == 1) {
+                    array[1] = x;
+                    return;
+                }
+            }
+            array[hole] = x;
         }
-        array[hole] = x;
     }
 
     private void enlargeArray(int newSize) {
@@ -150,13 +158,7 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
         for (; firstChildIndex(hole) <= currentSize; hole = child) {
 
 
-            child = firstChildIndex(hole);
-
-            for (int i = 0; i < noOfChildren; i++) {
-                if (child + i <= currentSize && array[firstChildIndex(hole) + i].compareTo(array[child]) < 0) {
-                    child = firstChildIndex(hole) + i;
-                }
-            }
+            child = indexOfSmallestChild(hole);
 
             if (array[child].compareTo(tmp) < 0)
                 array[hole] = array[child];
@@ -166,12 +168,31 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
         array[hole] = tmp;
     }
 
+    private int indexOfSmallestChild(int hole) {
+        int firstChild = firstChildIndex(hole);
+        int limit = firstChild + noOfChildren -1;
+        int min = firstChild;
+
+        if (limit > currentSize)
+            limit = currentSize;
+
+        for (int i = firstChild; i < limit; i++) {
+
+            if (array[i + 1].compareTo(array[min]) < 0) {
+                min = i + 1;
+            }
+        }
+        return min;
+
+    }
+
 
 
     int parentIndex(int i) {
         if (i < 2) {
             throw new IllegalArgumentException();
         }
+        //return (i + noOfChildren -2) / noOfChildren;
         return (i - 2) / noOfChildren + 1;
     }
 
@@ -179,7 +200,8 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
         if (i < 1) {
             throw new IllegalArgumentException();
         }
-        return (i -1) * noOfChildren + 2;
+        //return (i -1) * noOfChildren + 2;
+        return i * noOfChildren - (noOfChildren - 2);
 
     }
 
