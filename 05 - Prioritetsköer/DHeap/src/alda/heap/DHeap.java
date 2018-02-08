@@ -23,8 +23,7 @@ package alda.heap;
 // RRORS********************************
 //Throws UnderflowException as appropriate
 
-import java.util.Arrays;
-
+//
 /**
  * Implements a binary heap.
  * Note that all "matching" is based on the compareTo method.
