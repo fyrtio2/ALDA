@@ -159,6 +159,7 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
 
             child = indexOfSmallestChild(hole);
 
+
             if (array[child].compareTo(tmp) < 0)
                 array[hole] = array[child];
             else
@@ -176,7 +177,6 @@ public class DHeap<AnyType extends Comparable<? super AnyType>> {
             limit = currentSize;
 
         for (int i = firstChild; i < limit; i++) {
-
             if (array[i + 1].compareTo(array[min]) < 0) {
                 min = i + 1;
             }
