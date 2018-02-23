@@ -107,8 +107,29 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
 
     public List<T> breadthFirstSearch(T start, T end) {
-        return null;
+        if (!nodes.containsKey(start) || !nodes.containsKey(end)) {
+            return new ArrayList<>();
+        }
+        unvisitNodes();
+
+        LinkedList<T> queue = new LinkedList<>();
+        LinkedList<T> result = new LinkedList<>();
+        T currentNode = start;
+
+        queue.add(start);
+
+        nodes.get(start).setVisited(true);
+
+        while (!queue.isEmpty()){
+
+            start = queue.poll();
+            //for(T neighbourNodes : nodes.get(start)........
+
+        //}
+
+        return result;
     }
+
 
     public UndirectedGraph<T> minimumSpanningTree() {
         return null;
