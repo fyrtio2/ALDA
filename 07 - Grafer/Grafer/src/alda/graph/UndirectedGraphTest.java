@@ -86,7 +86,7 @@ public class UndirectedGraphTest {
     // E -- C [label=2]; E -- D [label=2]; J -- D [label=5];
     // }
     // @formatter:on
-/*
+
     private void createExampleGraph() {
         addExampleNodes();
 
@@ -153,7 +153,7 @@ public class UndirectedGraphTest {
             testDepthFirstSearch(node, node, 1);
         }
     }
-
+/*
     private void testBreadthFirstSearch(String start, String end, int expectedathLength) {
         createExampleGraph();
         List<String> path = graph.breadthFirstSearch(start, end);

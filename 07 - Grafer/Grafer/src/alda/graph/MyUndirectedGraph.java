@@ -1,10 +1,7 @@
 package alda.graph;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
@@ -66,7 +63,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
                 return edge;
             }
         }
-        return null;
+        return null; //Returnerar null om det inte finns någon båge mellan de två noderna.
     }
 
     public int getCost(T node1, T node2) {
@@ -78,8 +75,36 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     }
 
     public List<T> depthFirstSearch(T start, T end) {
+
+        if (!nodes.containsKey(start) || !nodes.containsKey(end)) {
+            return new ArrayList<>();
+        }
+        unvisitNodes();
+
+        T currentNode = start;
+        Stack<T> stack = new Stack<>();
+        List<T> path = new LinkedList<>();
+        stack.push(start);
+        nodes.get(start).setVisited(true);
+
+
+        while(!stack.isEmpty()) {
+            if (currentNode.equals(end)) {
+                path.add(stack.pop());
+                return path;
+            }
+        }
         return null;
     }
+
+
+
+    private void unvisitNodes() {
+        for (T t: nodes.keySet()) {
+            nodes.get(t).setVisited(false);
+        }
+    }
+
 
     public List<T> breadthFirstSearch(T start, T end) {
         return null;
