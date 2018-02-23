@@ -83,25 +83,38 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         }
         unvisitNodes();
 
-        T currentNode = start;
-        Stack<T> stack = new Stack<>();
+        Node<T> currentNode = nodes.get(start);
+        Stack<Node<T>> stack = new Stack<>();
         List<T> path = new LinkedList<>();
 
-        stack.push(start);
+        stack.push(currentNode);
         nodes.get(start).setVisited(true);
 
 
 
         while(!stack.isEmpty()) {
-            if (currentNode.equals(end)) {
-                path.add(stack.pop());
+            if (currentNode.getData().equals(end)) {
+                for (int i = 0; i < stack.size(); i++) {
+                    path.add(stack.pop().getData());
+                }
                 return path;
             }
 
+
+
+
+        }
+        return path;
+    }
+
+    private Node<T> getNextNeighbour(Node<T> node) {
+        for (Node<T> n: node.getNeighbours()) {
+            if (!node.isVisited()) {
+                return n;
+            }
         }
         return null;
     }
-
 
 
     private void unvisitNodes() {
