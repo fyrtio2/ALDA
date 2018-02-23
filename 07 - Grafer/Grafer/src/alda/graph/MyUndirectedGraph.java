@@ -1,11 +1,14 @@
 package alda.graph;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
+    private List<Node<T>> nodes = new ArrayList<>();
+
     public int getNumberOfNodes() {
-        return 0;
+        return nodes.size();
     }
 
     public int getNumberOfEdges() {
