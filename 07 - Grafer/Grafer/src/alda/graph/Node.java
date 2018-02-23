@@ -1,8 +1,12 @@
 package alda.graph;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Node<T> {
     private T data;
-    boolean visited = false;
+    private boolean visited = false;
+    private Set<Node<T>> neighbours = new HashSet<>();
 
     public Node(T data) {
         this.data = data;
@@ -18,5 +22,18 @@ public class Node<T> {
 
     public boolean isVisited() {
         return visited;
+    }
+
+    public void addNeighbour(Node<T> node) {
+        neighbours.add(node);
+    }
+
+    public Set<Node<T>> getNeighbours() {
+        return neighbours;
+
+    }
+
+    public String toString() {
+        return (String) this.data;
     }
 }

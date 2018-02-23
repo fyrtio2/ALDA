@@ -39,6 +39,8 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         } catch (NullPointerException e) {
 
             Edge<T> newEdge = new Edge<>(nodes.get(node1), nodes.get(node2), cost);
+            nodes.get(node1).addNeighbour(nodes.get(node2));
+            nodes.get(node2).addNeighbour(nodes.get(node1));
             edges.add(newEdge);
             return true;
         }
@@ -84,8 +86,10 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         T currentNode = start;
         Stack<T> stack = new Stack<>();
         List<T> path = new LinkedList<>();
+
         stack.push(start);
         nodes.get(start).setVisited(true);
+
 
 
         while(!stack.isEmpty()) {
@@ -93,6 +97,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
                 path.add(stack.pop());
                 return path;
             }
+
         }
         return null;
     }
@@ -125,7 +130,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
             start = queue.poll();
             //for(T neighbourNodes : nodes.get(start)........
 
-        //}
+        }
 
         return result;
     }
