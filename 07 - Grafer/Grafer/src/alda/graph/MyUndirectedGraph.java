@@ -60,13 +60,13 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         return false;
     }
 
-    private Edge<T> getEdge(T node1, T node2) throws NullPointerException {
+    private Edge<T> getEdge(T node1, T node2) {
         for (Edge<T> edge : edges) {
             if (edge.hasNode(node1) && edge.hasNode(node2)) {
                 return edge;
             }
         }
-        throw new NullPointerException("Edge does not exist");
+        return null;
     }
 
     public int getCost(T node1, T node2) {
