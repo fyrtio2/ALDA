@@ -51,7 +51,14 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     }
 
     private static class Edge<T> {
+        Node<T> first, second;
+        int cost;
 
+        public Edge(Node<T> first, Node<T> second, int cost) {
+            this.first = first;
+            this.second = second;
+            this.cost = cost;
+        }
     }
 
     private static class Node<T> {
