@@ -1,18 +1,19 @@
 package alda.graph;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
+    private Map<T, Node<T>> nodes = new HashMap<>();
+    private List<Edge<T>> edges = new ArrayList<>();
+
     @Override
     public int getNumberOfNodes() {
-        return 0;
+        return nodes.size();
     }
 
     @Override
     public int getNumberOfEdges() {
-        return 0;
+        return edges.size();
     }
 
     @Override
