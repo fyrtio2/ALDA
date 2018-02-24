@@ -28,7 +28,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public boolean connect(T node1, T node2, int cost) {
-        if (!nodes.containsKey(node1) && !nodes.containsKey(node2)) {
+        if (!nodes.containsKey(node1) || !nodes.containsKey(node2)) {
             return false;
         }
         if (cost < 1) {
@@ -59,7 +59,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         if (!nodes.containsKey(node1) || !nodes.containsKey(node2)) {
             return false;
         }
-        if (nodes.get(node1).neighbours.contains(node2) && nodes.get(node2).neighbours.contains(node1)) {
+        if (nodes.get(node1).neighbours.contains(nodes.get(node2)) && nodes.get(node2).neighbours.contains(nodes.get(node1))) {
             return true;
         }
         return false;
@@ -67,7 +67,13 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public int getCost(T node1, T node2) {
-        return 0;
+        for (Edge<T> edge: edges) {
+            if ((edge.first.data == node1 && edge.second.data.equals(node2)) || (edge.first.data.equals(node2) && edge.second.data.equals(node1))) {
+                return edge.cost;
+            }
+
+        }
+        return -1;
     }
 
     @Override
