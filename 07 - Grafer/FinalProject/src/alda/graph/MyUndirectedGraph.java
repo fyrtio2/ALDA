@@ -95,9 +95,37 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         }
 
         while(!stack.isEmpty()) {
-
+            if(neigboursIsVisited(stack.peek()) && !stack.peek().equals(end)) {
+                stack.pop();
+            } else {
+                for (Node<T> n: nodes.get(current).neighbours) {
+                    if(!n.visited && isConnected(n.data, current)) {
+                        n.visited = true;
+                        stack.push(n.data);
+                    }
+                    current = stack.peek();
+                }
+            }
+            if (stack.peek().equals(end)) {
+                break;
+            }
         }
-        return null;
+
+        while(!stack.isEmpty()) {
+            list.addFirst(stack.pop());
+        }
+        return list;
+    }
+
+    private boolean neigboursIsVisited(T t) { {
+        for (Node<T> n: nodes.get(t).neighbours) {
+            if (!n.visited) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     }
 
     private void resetNodesStatus() {
