@@ -52,16 +52,15 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         if (!(nodes.containsKey(node1) || nodes.containsKey(node2))) {
             return false;
         }
-
         if (getEdge(node1, node2) != null) {
-                return true;
+            return true;
         }
         return false;
     }
 
     private Edge<T> getEdge(T node1, T node2) {
         for (Edge<T> edge : edges) {
-            if (edge.hasNode(node1) && edge.hasNode(node2)) {
+            if ((edge.hasNode(node1) && edge.hasNode(node2))) {
                 return edge;
             }
         }
@@ -86,30 +85,49 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         Node<T> currentNode = nodes.get(start);
         Stack<Node<T>> stack = new Stack<>();
         List<T> path = new LinkedList<>();
-
         stack.push(currentNode);
+
         nodes.get(start).setVisited(true);
 
 
 
         while(!stack.isEmpty()) {
             if (currentNode.getData().equals(end)) {
-                for (int i = 0; i < stack.size(); i++) {
-                    path.add(stack.pop().getData());
+                for (int i = stack.size(); i > 0; i--) {
+                    path.add(0, stack.pop().getData());
                 }
                 return path;
             }
 
+            Node<T> nextNode = getNextNeighbour(currentNode);
+            if (nextNode != null) {
+                currentNode = nextNode;
+                stack.push(currentNode);
+            } else {
+                currentNode = stack.pop();
+            }
 
 
 
+            /*
+            Node<T> next = getNextNeighbour(currentNode);
+            if (next != null) {
+                stack.push(next);
+                currentNode = next;
+            } else {
+                currentNode = stack.pop();
+            }
+
+            System.out.println(stack);
+*/
         }
-        return path;
+        return null;
     }
 
     private Node<T> getNextNeighbour(Node<T> node) {
         for (Node<T> n: node.getNeighbours()) {
-            if (!node.isVisited()) {
+            if (!n.isVisited()) {
+                n.setVisited(true);
                 return n;
             }
         }
