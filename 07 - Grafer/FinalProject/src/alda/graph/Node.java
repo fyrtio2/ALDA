@@ -12,11 +12,27 @@ public class Node<T> {
         this.data = data;
     }
 
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public void addNeighbour(Node<T> n) {
+        neighbours.add(n);
+    }
+
+    public Set<Node<T>> getNeighbours() {
+        return neighbours;
+    }
+
     public T getData() {
         return data;
     }
 
     public boolean isVisited() {
         return visited;
+    }
+
+    public String toString() {
+        return (String) data;
     }
 }
