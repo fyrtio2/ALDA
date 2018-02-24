@@ -1,6 +1,8 @@
 package alda.graph;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     @Override
@@ -46,5 +48,23 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     @Override
     public UndirectedGraph<T> minimumSpanningTree() {
         return null;
+    }
+
+    private static class Edge<T> {
+
+    }
+
+    private static class Node<T> {
+        T data;
+        boolean visited;
+        Set<T> neighbours = new HashSet<>();
+
+        public Node(T data) {
+            this.data = data;
+        }
+
+        public String toString() {
+            return (String) data;
+        }
     }
 }
