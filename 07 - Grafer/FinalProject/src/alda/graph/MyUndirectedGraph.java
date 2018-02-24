@@ -33,12 +33,8 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         }
         if (node1 != null && node2 != null) {
             if (isConnected(node1, node2)) {
-                for (Edge<T> e: edges) {
-                    if (isConnected(node1, node2)) {
 
-                    }
-                }
-                return true;
+
             }
         }
         return false;
@@ -46,13 +42,11 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public boolean isConnected(T node1, T node2) {
-        for (Edge<T> e: edges) {
-            if (e.first.data.equals(node1) && e.second.data.equals(node2)) {
-                return true;
-            }
-            if (e.first.data.equals(node2) && e.second.data.equals(node1)) {
-                return true;
-            }
+        if (!nodes.containsKey(node1) || !nodes.containsKey(node2)) {
+            return false;
+        }
+        if (nodes.get(node1).neighbours.contains(node2) && nodes.get(node2).neighbours.contains(node1)) {
+            return true;
         }
         return false;
     }
