@@ -78,7 +78,17 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public List<T> depthFirstSearch(T start, T end) {
+        resetNodesStatus();
+        if (!nodes.containsKey(start) && !nodes.containsKey(end)){
+            return null;
+        }
         return null;
+    }
+
+    private void resetNodesStatus() {
+        for (Node<T> node: nodes.values()) {
+            node.visited = false;
+        }
     }
 
     @Override
