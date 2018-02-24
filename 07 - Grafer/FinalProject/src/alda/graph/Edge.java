@@ -14,6 +14,10 @@ public class Edge<T> {
         return cost;
     }
 
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
     public boolean hasNode(Node<T> node) {
         if (node.getData().equals(first.getData()) || node.getData().equals(second.getData())) {
             return true;
