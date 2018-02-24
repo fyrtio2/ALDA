@@ -28,13 +28,27 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public boolean connect(T node1, T node2, int cost) {
+        if (!nodes.containsKey(node1) && !nodes.containsKey(node2)) {
+            return false;
+        }
         if (cost < 1) {
             return false;
         }
         if (node1 != null && node2 != null) {
             if (isConnected(node1, node2)) {
+                for (Edge<T> edge: edges) {
+                    if ((edge.first.data == node1 && edge.second.data.equals(node2)) || (edge.first.data.equals(node2) && edge.second.data.equals(node1))) {
+                        edge.cost = cost;
+                        return true;
+                    }
+                }
 
-
+            } else {
+                Edge<T> e = new Edge<>(nodes.get(node1), nodes.get(node2), cost);
+                edges.add(e);
+                nodes.get(node1).neighbours.add(nodes.get(node2));
+                nodes.get(node2).neighbours.add(nodes.get(node1));
+                return true;
             }
         }
         return false;
@@ -86,7 +100,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     private static class Node<T> {
         T data;
         boolean visited;
-        Set<T> neighbours = new HashSet<>();
+        Set<Node<T>> neighbours = new HashSet<>();
 
         public Node(T data) {
             this.data = data;
