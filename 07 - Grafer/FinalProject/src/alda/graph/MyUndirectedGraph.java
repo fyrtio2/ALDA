@@ -18,7 +18,12 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public boolean add(T newNode) {
-        return false;
+        if (nodes.containsKey(newNode)) {
+            return false;
+        }
+        Node<T> node = new Node<>(newNode);
+        nodes.put(node.data, node);
+        return true;
     }
 
     @Override
