@@ -38,7 +38,7 @@ public class UndirectedGraphTest {
         assertFalse(graph.add("J"));
         assertTrue(graph.add("K"));
     }
-/*
+
     @Test
     public void testConnect() {
         addExampleNodes();
@@ -60,7 +60,7 @@ public class UndirectedGraphTest {
         assertEquals(3, graph.getCost("A", "G"));
         assertEquals(3, graph.getCost("G", "A"));
     }
-
+/*
     @Test
     public void testTooLowWeight() {
         addExampleNodes();
