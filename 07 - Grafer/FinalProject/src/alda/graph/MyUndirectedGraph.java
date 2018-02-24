@@ -82,6 +82,21 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         if (!nodes.containsKey(start) && !nodes.containsKey(end)){
             return null;
         }
+
+        Stack<T> stack = new Stack<>();
+        LinkedList<T> list = new LinkedList<>();
+        stack.push(start);
+        T current = start;
+        nodes.get(start).visited = true;
+
+        if(start.equals(end)) {
+            list.addFirst(stack.pop());
+            return list;
+        }
+
+        while(!stack.isEmpty()) {
+
+        }
         return null;
     }
 
