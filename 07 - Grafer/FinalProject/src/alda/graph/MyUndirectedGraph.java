@@ -2,6 +2,7 @@ package alda.graph;
 
 import java.util.*;
 
+
 public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     private Map<T, Node<T>> nodes = new HashMap<>();
     private List<Edge<T>> edges = new ArrayList<>();
@@ -179,11 +180,10 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public UndirectedGraph<T> minimumSpanningTree() {
-        PriorityQueue<Edge<T>> edgePQ = new PriorityQueue<>(edges);
-
         return null;
-
     }
+
+
 
 
     private static class Edge<T> implements Comparable<Edge<T>> {
@@ -228,3 +228,4 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     }
 }
+
