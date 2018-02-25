@@ -1,3 +1,10 @@
+/**
+ * Oscar Törnquist  - osta3589
+ * Emil Rosell      - emro9957
+ *
+ */
+
+
 package alda.graph;
 
 import java.util.*;
@@ -89,11 +96,6 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         T current = start;
         nodes.get(start).visited = true;
 
-        if (start.equals(end)) {
-            list.addFirst(stack.pop());
-            return list;
-        }
-
         while (!stack.isEmpty()) {
             if (neigboursIsVisited(stack.peek()) && !stack.peek().equals(end)) {
                 stack.pop();
@@ -110,9 +112,13 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
                 break;
             }
         }
+        return collectList(stack);
+    }
 
-        while (!stack.isEmpty()) {
-            list.addFirst(stack.pop());
+    private LinkedList<T> collectList(Stack<T> s) {
+        LinkedList<T> list = new LinkedList<>();
+         while (!s.isEmpty()) {
+            list.addFirst(s.pop());
         }
         return list;
     }
