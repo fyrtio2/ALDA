@@ -180,8 +180,15 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public UndirectedGraph<T> minimumSpanningTree() {
+        PriorityQueue<Edge<T>> pq = new PriorityQueue<>(edges);
+        HashMap<Node<T>, Set<Node<T>>> nodesMap = new HashMap<>();
+        for (T t: nodes.keySet()) {
+            Set<Node<T>> newSet = new HashSet<>();
+            newSet.add(nodes.get(t));
+            nodesMap.put(nodes.get(t), newSet);
+        }
 
-
+        return null;
     }
 
 
