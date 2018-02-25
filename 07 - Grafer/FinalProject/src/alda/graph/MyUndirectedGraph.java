@@ -1,7 +1,6 @@
 /**
  * Oscar Törnquist  - osta3589
  * Emil Rosell      - emro9957
- *
  */
 
 
@@ -96,7 +95,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         nodes.get(start).visited = true;
 
         while (!stack.isEmpty()) {
-            if (neigboursIsVisited(stack.peek()) && !stack.peek().equals(end)) {
+            if (neighboursIsVisited(stack.peek()) && !stack.peek().equals(end)) {
                 stack.pop();
             } else {
                 for (Node<T> n : nodes.get(current).neighbours) {
@@ -116,21 +115,21 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     private LinkedList<T> collectList(Stack<T> s) {
         LinkedList<T> list = new LinkedList<>();
-         while (!s.isEmpty()) {
+        while (!s.isEmpty()) {
             list.addFirst(s.pop());
         }
         return list;
     }
 
-    private boolean neigboursIsVisited(T t) {
-        {
-            for (Node<T> n : nodes.get(t).neighbours) {
-                if (!n.visited) {
-                    return false;
-                }
+    private boolean neighboursIsVisited(T t) {
+
+        for (Node<T> n : nodes.get(t).neighbours) {
+            if (!n.visited) {
+                return false;
             }
-            return true;
         }
+        return true;
+
 
     }
 
@@ -190,10 +189,10 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         HashSet<Edge<T>> edgeSet = new HashSet<>();
         HashMap<Node<T>, ArrayList<Edge<T>>> nodeMap = new HashMap<>();
 
-        for (Node<T> n: nodes.values()) {
+        for (Node<T> n : nodes.values()) {
             for (Edge<T> e : edges) {
                 if (n.data.equals(e.first.data) || n.data.equals(e.second.data)) {
-                    if (nodeMap.get(n) == null){
+                    if (nodeMap.get(n) == null) {
                         ArrayList<Edge<T>> list = new ArrayList<>();
                         list.add(e);
                         nodeMap.put(n, list);
@@ -205,17 +204,16 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         }
 
 
-
         Node<T> node = nodeMap.keySet().iterator().next();
         node.visited = true;
-        for (Edge<T> e: nodeMap.get(node)) {
+        for (Edge<T> e : nodeMap.get(node)) {
             if (edgeSet.add(e)) {
                 edgePQ.add(e);
             }
         }
         MyUndirectedGraph<T> newGraph = new MyUndirectedGraph<>();
 
-        while(!edgePQ.isEmpty()) {
+        while (!edgePQ.isEmpty()) {
             Edge<T> temp = edgePQ.poll();
 
             Node<T> a = temp.first;
@@ -229,14 +227,14 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
             if (a.visited) {
                 b.visited = true;
-                for (Edge<T> e: nodeMap.get(b)) {
+                for (Edge<T> e : nodeMap.get(b)) {
                     if (edgeSet.add(e)) {
                         edgePQ.add(e);
                     }
                 }
             } else {
                 a.visited = true;
-                for (Edge<T> e: nodeMap.get(a)) {
+                for (Edge<T> e : nodeMap.get(a)) {
                     if (edgeSet.add(e)) {
                         edgePQ.add(e);
                     }
