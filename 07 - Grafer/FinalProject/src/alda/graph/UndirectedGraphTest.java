@@ -1,7 +1,7 @@
 // Ändra inte på paketet
 package alda.graph;
 
-import org.junit.*;
+import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class UndirectedGraphTest {
 
-    private static final String[] STANDARD_NODES = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
+    private static final String[] STANDARD_NODES = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
 
     private UndirectedGraph<String> graph = new MyUndirectedGraph<>();
 
@@ -240,6 +240,7 @@ public class UndirectedGraphTest {
                 }
             }
         }
+
 
         assertEquals(6, totalEdges);
         assertEquals(16, totalCost);

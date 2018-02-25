@@ -68,7 +68,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     @Override
     public int getCost(T node1, T node2) {
         for (Edge<T> edge : edges) {
-            if ((edge.first.data == node1 && edge.second.data.equals(node2)) || (edge.first.data.equals(node2) && edge.second.data.equals(node1))) {
+            if ((edge.first.data.equals(node1) && edge.second.data.equals(node2)) || (edge.first.data.equals(node2) && edge.second.data.equals(node1))) {
                 return edge.cost;
             }
 
@@ -180,25 +180,28 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     @Override
     public UndirectedGraph<T> minimumSpanningTree() {
         resetNodesStatus();
+
         PriorityQueue<Edge<T>> edgePQ = new PriorityQueue<>();
         HashSet<Edge<T>> edgeSet = new HashSet<>();
         HashMap<Node<T>, ArrayList<Edge<T>>> nodeMap = new HashMap<>();
 
         for (Node<T> n: nodes.values()) {
             for (Edge<T> e : edges) {
-                if (e.first == n || e.first.equals(n) || e.second == n || e.second.equals(n)) {
-                    if (nodeMap.get(n) != null){
-                        nodeMap.get(n).add(e);
-                    } else {
+                if (n.data.equals(e.first.data) || n.data.equals(e.second.data)) {
+                    if (nodeMap.get(n) == null){
                         ArrayList<Edge<T>> list = new ArrayList<>();
                         list.add(e);
                         nodeMap.put(n, list);
+                    } else {
+                        nodeMap.get(n).add(e);
                     }
                 }
             }
         }
 
-        Node<T> node = nodes.values().iterator().next();
+
+
+        Node<T> node = nodeMap.keySet().iterator().next();
         node.visited = true;
         for (Edge<T> e: nodeMap.get(node)) {
             if (edgeSet.add(e)) {
@@ -237,7 +240,6 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
         }
 
-
         return newGraph;
     }
 
@@ -254,12 +256,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
         @Override
         public int compareTo(Edge<T> o) {
-            if (o.cost < this.cost) {
-                return 1;
-            } else if (o.cost > this.cost) {
-                return -1;
-            }
-            return 0;
+            return cost - o.cost;
         }
 
         public String toString() {
