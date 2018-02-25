@@ -136,6 +136,22 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public List<T> breadthFirstSearch(T start, T end) {
+        resetNodesStatus();
+
+        if (!nodes.containsKey(start) && !nodes.containsKey(end)) {
+            return null;
+        }
+
+        LinkedList<T> queue = new LinkedList<>();
+        LinkedList<T> list = new LinkedList<>();
+        queue.addLast(start);
+        nodes.get(start).visited = true;
+
+        if (start.equals(end)) {
+            list.addFirst(queue.poll());
+            return list;
+        }
+
         return null;
     }
 
