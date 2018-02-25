@@ -185,7 +185,7 @@ public class UndirectedGraphTest {
             testBreadthFirstSearch(node, node, 1);
         }
     }
-/*
+
     @Test
     public void testMinimumSpanningTree() {
         createExampleGraph();
@@ -244,5 +244,5 @@ public class UndirectedGraphTest {
         assertEquals(6, totalEdges);
         assertEquals(16, totalCost);
     }
-*/
+
 }

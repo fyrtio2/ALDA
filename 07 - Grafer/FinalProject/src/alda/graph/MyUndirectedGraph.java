@@ -173,13 +173,26 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         }
         list.addFirst(start);
         list.addLast(end);
+        System.out.println(list);
 
         return list;
     }
+    
 
     @Override
     public UndirectedGraph<T> minimumSpanningTree() {
-        return null;
+        MyUndirectedGraph<T> tempGraph = new MyUndirectedGraph<>();
+        PriorityQueue<Edge<T>> pq =new PriorityQueue<>(edges);
+
+        while(tempGraph.getNumberOfEdges() < (getNumberOfNodes() -1)) {
+            Edge<T> tempEdge = pq.poll();
+            if (!tempGraph.nodes.containsKey(tempEdge.first.data) || !tempGraph.nodes.containsKey(tempEdge.second.data)) {
+                addConnect(tempEdge, tempGraph);
+            }
+        }
+    }
+
+    private void addConnect(Edge<T> tempEdge, MyUndirectedGraph<T> tempGraph) {
     }
 
     private static class Edge<T> {
