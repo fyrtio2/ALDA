@@ -166,12 +166,13 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
             }
         }
         T temp = end;
-        list.addFirst(temp);
+
         while(!nodes.get(temp).previous.equals(start)) {
             list.addFirst(nodes.get(temp).previous);
             temp = nodes.get(temp).previous;
         }
-        list.add(start);
+        list.addFirst(start);
+        list.addLast(end);
 
         return list;
     }
