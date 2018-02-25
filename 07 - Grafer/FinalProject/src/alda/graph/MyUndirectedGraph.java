@@ -80,7 +80,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     public List<T> depthFirstSearch(T start, T end) {
         resetNodesStatus();
         if (!nodes.containsKey(start) && !nodes.containsKey(end)){
-            return null;
+            return new LinkedList<>();
         }
 
         Stack<T> stack = new Stack<>();
@@ -173,7 +173,6 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         }
         list.addFirst(start);
         list.addLast(end);
-        System.out.println(list);
 
         return list;
     }
@@ -181,21 +180,13 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public UndirectedGraph<T> minimumSpanningTree() {
-        MyUndirectedGraph<T> tempGraph = new MyUndirectedGraph<>();
-        PriorityQueue<Edge<T>> pq =new PriorityQueue<>(edges);
 
-        while(tempGraph.getNumberOfEdges() < (getNumberOfNodes() -1)) {
-            Edge<T> tempEdge = pq.poll();
-            if (!tempGraph.nodes.containsKey(tempEdge.first.data) || !tempGraph.nodes.containsKey(tempEdge.second.data)) {
-                addConnect(tempEdge, tempGraph);
-            }
-        }
+
     }
 
-    private void addConnect(Edge<T> tempEdge, MyUndirectedGraph<T> tempGraph) {
-    }
 
-    private static class Edge<T> {
+
+    private static class Edge<T> implements Comparable<Edge<T>>{
         Node<T> first, second;
         int cost;
 
@@ -205,6 +196,15 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
             this.cost = cost;
         }
 
+        @Override
+        public int compareTo(Edge<T> o) {
+            if (o.cost < this.cost) {
+                return 1;
+            } else if (o.cost > this.cost) {
+                return -1;
+            }
+            return 0;
+        }
     }
 
     private static class Node<T> {
@@ -220,5 +220,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         public String toString() {
             return (String) data;
         }
+
+
     }
 }
