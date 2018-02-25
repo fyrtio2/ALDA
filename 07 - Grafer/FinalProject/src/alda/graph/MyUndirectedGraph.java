@@ -1,7 +1,6 @@
 package alda.graph;
 
 import java.util.*;
-import java.util.Map.Entry;
 
 public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     private Map<T, Node<T>> nodes = new HashMap<>();
@@ -180,15 +179,67 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public UndirectedGraph<T> minimumSpanningTree() {
+        resetNodesStatus();
         PriorityQueue<Edge<T>> edgePQ = new PriorityQueue<>();
-        HashSet<Node<T>> nodeSet = new HashSet<>();
+        HashSet<Edge<T>> edgeSet = new HashSet<>();
+        HashMap<Node<T>, ArrayList<Edge<T>>> nodeMap = new HashMap<>();
+
+        for (Node<T> n: nodes.values()) {
+            for (Edge<T> e : edges) {
+                if (e.first == n || e.first.equals(n) || e.second == n || e.second.equals(n)) {
+                    if (nodeMap.get(n) != null){
+                        nodeMap.get(n).add(e);
+                    } else {
+                        ArrayList<Edge<T>> list = new ArrayList<>();
+                        list.add(e);
+                        nodeMap.put(n, list);
+                    }
+                }
+            }
+        }
+
+        Node<T> node = nodes.values().iterator().next();
+        node.visited = true;
+        for (Edge<T> e: nodeMap.get(node)) {
+            if (edgeSet.add(e)) {
+                edgePQ.add(e);
+            }
+        }
+        MyUndirectedGraph<T> newGraph = new MyUndirectedGraph<>();
+
+        while(!edgePQ.isEmpty()) {
+            Edge<T> temp = edgePQ.poll();
+
+            Node<T> a = temp.first;
+            Node<T> b = temp.second;
+
+            if (!(temp.first.visited && temp.second.visited) && !temp.first.equals(temp.second)) {
+                newGraph.add(a.data);
+                newGraph.add(b.data);
+                newGraph.connect(a.data, b.data, temp.cost);
+            }
+
+            if (a.visited) {
+                b.visited = true;
+                for (Edge<T> e: nodeMap.get(b)) {
+                    if (edgeSet.add(e)) {
+                        edgePQ.add(e);
+                    }
+                }
+            } else {
+                a.visited = true;
+                for (Edge<T> e: nodeMap.get(a)) {
+                    if (edgeSet.add(e)) {
+                        edgePQ.add(e);
+                    }
+                }
+            }
+
+        }
 
 
-
-        return null;
+        return newGraph;
     }
-
-
 
 
     private static class Edge<T> implements Comparable<Edge<T>> {
