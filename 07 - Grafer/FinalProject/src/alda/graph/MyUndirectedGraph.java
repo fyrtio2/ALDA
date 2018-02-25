@@ -91,7 +91,6 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         }
 
         Stack<T> stack = new Stack<>();
-        LinkedList<T> list = new LinkedList<>();
         stack.push(start);
         T current = start;
         nodes.get(start).visited = true;
