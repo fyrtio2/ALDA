@@ -36,7 +36,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         }
         if (node1 != null && node2 != null) {
             if (isConnected(node1, node2)) {
-                for (Edge<T> edge: edges) {
+                for (Edge<T> edge : edges) {
                     if ((edge.first.data == node1 && edge.second.data.equals(node2)) || (edge.first.data.equals(node2) && edge.second.data.equals(node1))) {
                         edge.cost = cost;
                         return true;
@@ -67,7 +67,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
     @Override
     public int getCost(T node1, T node2) {
-        for (Edge<T> edge: edges) {
+        for (Edge<T> edge : edges) {
             if ((edge.first.data == node1 && edge.second.data.equals(node2)) || (edge.first.data.equals(node2) && edge.second.data.equals(node1))) {
                 return edge.cost;
             }
@@ -79,7 +79,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     @Override
     public List<T> depthFirstSearch(T start, T end) {
         resetNodesStatus();
-        if (!nodes.containsKey(start) && !nodes.containsKey(end)){
+        if (!nodes.containsKey(start) && !nodes.containsKey(end)) {
             return new LinkedList<>();
         }
 
@@ -89,17 +89,17 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         T current = start;
         nodes.get(start).visited = true;
 
-        if(start.equals(end)) {
+        if (start.equals(end)) {
             list.addFirst(stack.pop());
             return list;
         }
 
-        while(!stack.isEmpty()) {
-            if(neigboursIsVisited(stack.peek()) && !stack.peek().equals(end)) {
+        while (!stack.isEmpty()) {
+            if (neigboursIsVisited(stack.peek()) && !stack.peek().equals(end)) {
                 stack.pop();
             } else {
-                for (Node<T> n: nodes.get(current).neighbours) {
-                    if(!n.visited && isConnected(n.data, current)) {
+                for (Node<T> n : nodes.get(current).neighbours) {
+                    if (!n.visited && isConnected(n.data, current)) {
                         n.visited = true;
                         stack.push(n.data);
                     }
@@ -111,27 +111,26 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
             }
         }
 
-        while(!stack.isEmpty()) {
+        while (!stack.isEmpty()) {
             list.addFirst(stack.pop());
         }
         return list;
     }
 
-    private boolean neigboursIsVisited(T t) { {
-        for (Node<T> n: nodes.get(t).neighbours) {
-            if (!n.visited) {
-                return false;
+    private boolean neigboursIsVisited(T t) {
+        {
+            for (Node<T> n : nodes.get(t).neighbours) {
+                if (!n.visited) {
+                    return false;
+                }
             }
+            return true;
         }
-        return true;
-    }
 
     }
 
     private void resetNodesStatus() {
-        for (Node<T> node: nodes.values()) {
-            node.visited = false;
-        }
+        nodes.values().forEach(n -> n.visited = false);
     }
 
     @Override
@@ -152,10 +151,10 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
             return list;
         }
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             T current = queue.poll();
 
-            for (Node<T> node: nodes.get(current).neighbours) {
+            for (Node<T> node : nodes.get(current).neighbours) {
                 if (node.previous == null) {
                     node.previous = current;
                 }
@@ -167,7 +166,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
         }
         T temp = end;
 
-        while(!nodes.get(temp).previous.equals(start)) {
+        while (!nodes.get(temp).previous.equals(start)) {
             list.addFirst(nodes.get(temp).previous);
             temp = nodes.get(temp).previous;
         }
@@ -176,24 +175,18 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
 
         return list;
     }
-    
+
 
     @Override
     public UndirectedGraph<T> minimumSpanningTree() {
-        PriorityQueue<Edge<T>> pq = new PriorityQueue<>(edges);
-        HashMap<Node<T>, Set<Node<T>>> nodesMap = new HashMap<>();
-        for (T t: nodes.keySet()) {
-            Set<Node<T>> newSet = new HashSet<>();
-            newSet.add(nodes.get(t));
-            nodesMap.put(nodes.get(t), newSet);
-        }
+        PriorityQueue<Edge<T>> edgePQ = new PriorityQueue<>(edges);
 
         return null;
+
     }
 
 
-
-    private static class Edge<T> implements Comparable<Edge<T>>{
+    private static class Edge<T> implements Comparable<Edge<T>> {
         Node<T> first, second;
         int cost;
 
@@ -211,6 +204,10 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
                 return -1;
             }
             return 0;
+        }
+
+        public String toString() {
+            return first.data + " " + second.data + " " + cost;
         }
     }
 
