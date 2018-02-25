@@ -142,9 +142,9 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
             return null;
         }
 
-        LinkedList<T> queue = new LinkedList<>();
+        Queue<T> queue = new LinkedList<>();
         LinkedList<T> list = new LinkedList<>();
-        queue.addLast(start);
+        queue.add(start);
         nodes.get(start).visited = true;
 
         if (start.equals(end)) {
@@ -152,7 +152,28 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
             return list;
         }
 
-        return null;
+        while(!queue.isEmpty()) {
+            T current = queue.poll();
+
+            for (Node<T> node: nodes.get(current).neighbours) {
+                if (node.previous == null) {
+                    node.previous = current;
+                }
+                if (!node.visited) {
+                    queue.add(node.data);
+                }
+                node.visited = true;
+            }
+        }
+        T temp = end;
+        list.addFirst(temp);
+        while(!nodes.get(temp).previous.equals(start)) {
+            list.addFirst(nodes.get(temp).previous);
+            temp = nodes.get(temp).previous;
+        }
+        list.add(start);
+
+        return list;
     }
 
     @Override
@@ -175,6 +196,7 @@ public class MyUndirectedGraph<T> implements UndirectedGraph<T> {
     private static class Node<T> {
         T data;
         boolean visited;
+        T previous = null;
         Set<Node<T>> neighbours = new HashSet<>();
 
         public Node(T data) {
