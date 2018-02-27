@@ -1,0 +1,72 @@
+% The format (A5) is selected to facilitate reading on small
+% devices and should NOT be changed. 
+\documentclass[a5paper,10pt,oneside]{article}
+
+% The package babel is loaded for Swdish with Swedish hyphenation,
+% replaces "Contents" with "Innehållsförteckning, "References"
+% with "Litteraturförteckning", etc.
+\usepackage[swedish]{babel}
+
+\usepackage[T1]{fontenc}
+
+% The package "inputenc" lets us specify what character encoding
+% has been used to save the .tex file. If your computer runs
+% Linux, the encoding is probably "utf8" by default, while under
+% Windows the default will probably be "latin1" The wrong
+% character encoding may give strange signs instead of "å", "ä"
+% and "ö" or may result in compilation errors.
+
+%\usepackage[latin1]{inputenc} % Probably right if you use Windows
+\usepackage[utf8]{inputenc}  % Probably right if you use Linux
+
+% The packages listed below are optional and can be removed if you
+% don't use them 
+\usepackage{graphicx} 
+\usepackage{cite}
+\usepackage{url}
+\usepackage{ifthen}
+\usepackage{listings}	
+
+
+% These two lines set up options for the listings package and
+% can be removed if you don't use it, or changed if you, e.g, 
+% use another language than Java. 
+% For more information about the listings package see:
+% ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\def \lstlistingname {Kodexempel}
+\lstset{language=Java,tabsize=3,numbers=left,frame=L,floatplacement=hbtp}
+
+
+\usepackage{ifpdf}
+\ifpdf
+	\usepackage[hidelinks]{hyperref}
+\else
+	\usepackage{url}
+\fi
+
+
+% Change NR and TITLE below to appropriate values
+\title{Tema NR: 9 Avancerade datastrukturer}
+
+% Write the name and user namn for all participants in the group here.
+% Separate persons with \and
+\author{Oscar Törnquist \url{osta3589} \and Emil Rosell \url{emro9957}}
+
+
+
+\begin{document}
+\maketitle
+
+\section*{Treaps}
+
+En treap är en slumpmässig datastruktur som är en kombination av ett binärt sökträd och en heap, därav namnet. Strukturen är ett binärt sökträd där varje nod innehåller ett data med ett vänster och ett höger barn. Det vänstra delträdet till noden innehåller element som är lägre och det högra delträdet innehåller element som är högre. Noden tilldelas slumpmässigt en prioritet som ska uppfylla heapordningen. Det innebär att på varje nivå måste föräldernoden ha samma eller högre prioritet än sina barn. Stämmer inte heapordningen så sker rotationer till dess att den gör, och trädet blir bättre balanserat. Det kommer fortfarande vara obalanserat men inte så farligt. 
+
+Det som då sker vid implementation är är att ett element sätts in och jämförs först med rotnoden och fortsätter sedan nedåt och jämför noderna till dess att den hittar sin rätta plats. Den nya noden får en prioritet tilldelad av en random generator och om den har högre prioritet än noderna längre upp i trädet så roteras den upp för att återställa heapordningen. Trädets distribution blir därför slumpmässig vilket gör att det inte kommer bli en perfekt triangel med perfekt balans. Men det spelar inte så stor roll, och det gör arr det blir enkelt att implementera eftersom den bara sker enkla fall där rotationen endast sker uppåt, vilket är en billig operation. 
+
+Sökningen sker på samma sätt som hos binära sökträd. Det behöver alltså inte ta hänsyn till prioriteten. Först jämförs rotnoden och om värdet är mindre fortsätter sökningen ner till vänster och om värdet är högre så fortsätter det ner till höger. Sedan jämförs barnnoden, är det samma värde så avslutas sökningen, annars fortsätter sökningen på samma sätt och kollar om värdet är högre eller lägre. Detta sker till dess att vi hittar noden med det värde vi söker, finns inget sådant så returneras false.
+
+Vid borttag av noder så ändras prioriteten hos noden som sätts till oändlighet vilket gör att noden kan roteras ner och bli till ett löv, så att den inte har några barnnoder. När noden roterats ner och blivit till ett löv kan det då tas bort. Om noden som ska tas bort redan är ett löv så kan det tas bort direkt. Genom att göra på detta sätt så ändras inte heapordningen och trädet förblir binärt. Treaps är enkla datastrukturer med en relativt enkel implementation och borttagning, som även har en passande tidkomplexitet. Detta gör att treaps kan vara att föredra framför andra binära sökträd.  
+
+
+
+\end{document}
