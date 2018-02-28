@@ -3,6 +3,10 @@
  *@Author Emil Rosell       -emro9957
  */
 
-public class MySkipList {
-    private int m = 0;
+public class MySkipList<T extends Comparable<T>> {
+
+    private class Node<T> {
+
+    }
 }
+
