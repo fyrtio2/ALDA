@@ -9,11 +9,18 @@ import java.util.List;
 
 public class MySkipList<T extends Comparable<T>> {
 
+    private int maxLevel;
     private int size;
     private Node<T> head, tail;
 
+    public MySkipList(int maxLevel) {
+        this.maxLevel = maxLevel;
+        this.head = null;
+        tail = head;
+    }
+
     public boolean add(T data) {
-        return addLast(data);
+        return contains(data) && addLast(data);
     }
 
     public boolean contains(T data) {
@@ -32,6 +39,8 @@ public class MySkipList<T extends Comparable<T>> {
         return null;
     }
 
+
+    public int getSize() {return size;}
     public Node<T> getHead(){ return head; }
     public Node<T> getTail() { return tail; }
 
@@ -43,9 +52,15 @@ public class MySkipList<T extends Comparable<T>> {
         return false;
     }
 
+    protected int randInt() {
+        return 0;
+    }
+
     private class Node<T> {
         T data;
         List<T> nextNodes = new LinkedList<>();
+
+        public Node(T data, int level) {}
 
     }
 
