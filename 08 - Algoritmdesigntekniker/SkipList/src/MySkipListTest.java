@@ -2,7 +2,7 @@ import org.junit.*;
 
 public class MySkipListTest {
 
-    MySkipList<Integer> mySkipList = new MySkipList<>(31);
+    MySkipList<Integer> mySkipList = new MySkipList<>(17);
 
     @Test
     public void loop() {

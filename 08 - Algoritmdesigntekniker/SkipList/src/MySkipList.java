@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Implementation av skiplist i Java med funktionaliteten att lägga till, ta bort och söka efter objekt i en skiplist.
+ * Implementation av en generisk skiplist i Java med funktionaliteten att lägga till, ta bort och söka efter objekt i en skiplist.
  * Listan tillåter ej dubbleter.
  *
  *@Author Oscar Törnquist   -osta3589
@@ -12,24 +12,26 @@ import java.util.Random;
 
 public class MySkipList<T extends Comparable<T>> {
 
-    private final int MAXLVL;
-    private int size;
+    private int MAXLVL;
+    private int size = 0;
     private Node<T> head, tail;
-    private static final Node<T> HEAD = "_HEAD";
-    private static final Node<T> TAIL = "_TAIL";
 
     public MySkipList(int maxLevel) {
         this.MAXLVL = maxLevel;
-
-
     }
 
     public boolean insert(T data) {
         if (contains(data))
             return false;
 
+        /*
+        Om storleken på listan är mindre än 2 så ska det första elementet som sätts in sättas till head,
+        om head inte är null ska elementet som sätts in sättas till tail och länkas ihop med head.
+        Båda skall vara MAXLVL för att garantera att första och sista elementet är  största storleken.
+         */
+
         int lvl = generateLvl();
-        Node<T> newNode = new Node<T>(data, lvl);
+        Node<T> newNode = new Node<>(data, lvl);
 
 
 
@@ -67,6 +69,7 @@ public class MySkipList<T extends Comparable<T>> {
         }
         return lvl;
     }
+
 
     private static class Node<T> {
         T data;
