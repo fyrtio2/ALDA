@@ -7,7 +7,7 @@ public class MySkipListTest {
     @Test
     public void loop() {
         for (int i = 0; i < 20; i++) {
-            System.out.println(mySkipList.randInt());
+            System.out.println(mySkipList.generateLvl());
         }
     }
 
