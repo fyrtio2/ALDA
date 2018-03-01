@@ -24,15 +24,19 @@ public class MySkipList<T extends Comparable<T>> {
     }
 
     public boolean add(T data) {
-        return !contains(data) && addLast(data);
+        if (contains(data))
+            return false;
+
+        int lvl = generateLvl();
+        Node<T> newNode = new Node<T>(data, lvl);
+
+
+
+        return false;
     }
 
     public boolean contains(T data) {
         return find(data) != null;
-    }
-
-    public boolean addFirst(T data) {
-        return false;
     }
 
     public boolean remove(T data) {
@@ -54,13 +58,11 @@ public class MySkipList<T extends Comparable<T>> {
         return null;
     }
 
-    private boolean addLast(T data) {
-        return false;
-    }
+
 
     protected int generateLvl() {
         Random rand = new Random();
-        int lvl = 0;
+        int lvl = 1;
         while(rand.nextBoolean() && lvl <= MAXLVL) {
             lvl++;
         }
@@ -69,9 +71,13 @@ public class MySkipList<T extends Comparable<T>> {
 
     private static class Node<T> {
         T data;
-        List<T> nextNodes = new LinkedList<>();
+        int level;
+        Node<T> up,
+                down,
+                next,
+                previous;
 
-        public Node(T data) {}
+        public Node(T data, int level) {}
 
         public String toString() {
             return "Node: " + data;

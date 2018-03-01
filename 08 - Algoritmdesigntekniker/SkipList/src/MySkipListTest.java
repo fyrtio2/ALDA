@@ -2,13 +2,22 @@ import org.junit.*;
 
 public class MySkipListTest {
 
-    MySkipList<Integer> mySkipList = new MySkipList<>();
+    MySkipList<Integer> mySkipList = new MySkipList<>(31);
 
     @Test
     public void loop() {
-        for (int i = 0; i < 20; i++) {
-            System.out.println(mySkipList.generateLvl());
+
+        int count = 0;
+        for (int i = 0; i < 1000000; i++) {
+            int lvl = mySkipList.generateLvl();
+            if (lvl >= 12) {
+                System.out.println(i + ": " + lvl);
+                count++;
+            }
+
+
         }
+        System.out.println(count);
     }
 
 }
