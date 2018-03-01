@@ -1,5 +1,4 @@
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -16,14 +15,16 @@ public class MySkipList<T extends Comparable<T>> {
     private final int MAXLVL;
     private int size;
     private Node<T> head, tail;
+    private static final Node<T> HEAD = "_HEAD";
+    private static final Node<T> TAIL = "_TAIL";
 
     public MySkipList(int maxLevel) {
         this.MAXLVL = maxLevel;
-        this.head = null;
-        tail = head;
+
+
     }
 
-    public boolean add(T data) {
+    public boolean insert(T data) {
         if (contains(data))
             return false;
 
@@ -49,8 +50,6 @@ public class MySkipList<T extends Comparable<T>> {
 
 
     public int getSize() { return size; }
-    public Node<T> getHead(){ return head; }
-    public Node<T> getTail() { return tail; }
 
     private T find(T data) {
         if (data == null)
@@ -72,12 +71,13 @@ public class MySkipList<T extends Comparable<T>> {
     private static class Node<T> {
         T data;
         int level;
-        Node<T> up,
-                down,
-                next,
-                previous;
+        ArrayList<Node<T>> nextNodes;
+        ArrayList<Node<T>> previousNodes;
 
-        public Node(T data, int level) {}
+        public Node(T data, int level) {
+            this.data = data;
+            this.level = level;
+        }
 
         public String toString() {
             return "Node: " + data;
