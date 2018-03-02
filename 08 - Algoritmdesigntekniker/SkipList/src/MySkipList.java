@@ -12,12 +12,14 @@ import java.util.Random;
 
 public class MySkipList<T extends Comparable<T>> {
 
-    private int MAXLVL;
+    private int maxLvl;
     private int size = 0;
     private Node<T> head, tail;
 
     public MySkipList(int maxLevel) {
-        this.MAXLVL = maxLevel;
+        this.maxLvl = maxLevel;
+        head = null;
+        tail = null;
     }
 
     public boolean insert(T data) {
@@ -27,13 +29,32 @@ public class MySkipList<T extends Comparable<T>> {
         /*
         Om storleken på listan är mindre än 2 så ska det första elementet som sätts in sättas till head,
         om head inte är null ska elementet som sätts in sättas till tail och länkas ihop med head.
-        Båda skall vara MAXLVL för att garantera att första och sista elementet är  största storleken.
+        Båda skall vara maxLvl för att garantera att första och sista elementet är  största storleken.
          */
+        int nodeLvl;
+        Node<T> newNode;
+        if (this.size < 2){
+            nodeLvl = maxLvl;
+            newNode = new Node<T>(data, nodeLvl);
 
-        int lvl = generateLvl();
-        Node<T> newNode = new Node<>(data, lvl);
+            if (head == null) {
+                head = newNode;
+                size++;
+                return true;
+            } else if (tail == null) {
+                tail = newNode;
+                size++;
 
+                for (int i = 0; i < newNode.level; i++) {
+                    head.nextNodes.add(tail);
+                    head.previousNodes.add(null);
+                    tail.nextNodes.add(null);
+                    tail.previousNodes.add(head);
+                }
+                return true;
 
+            }
+        }
 
         return false;
     }
@@ -64,7 +85,7 @@ public class MySkipList<T extends Comparable<T>> {
     protected int generateLvl() {
         Random rand = new Random();
         int lvl = 1;
-        while(rand.nextBoolean() && lvl <= MAXLVL) {
+        while(rand.nextBoolean() && lvl <= maxLvl) {
             lvl++;
         }
         return lvl;
