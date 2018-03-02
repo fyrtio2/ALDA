@@ -19,7 +19,6 @@ public class ClosestPair {
 
 
     private ArrayList<Point> points = new ArrayList<>();
-    Point[] smallestPoints = new Point[2];
 
 
     public void addPoint(Point p) {
@@ -46,15 +45,15 @@ public class ClosestPair {
      * between the closest pairs.
      */
     public double findClosestPair() {
-        if (points.isEmpty() || points.size() == 1)
+        if (points.size() <= 1)
             return -1;
-        Collections.sort(points, new CompareX());
+        points.sort(new CompareX());
         return findClosestPair(0, points.size() - 1);
     }
 
     private double findClosestPair(int start, int end) {
         if (end - start <= 2) {
-            return bruteForce(start, end);
+            return baseCase(start, end);
         } else {
             int middle = (start + end) / 2;
             double midX = (points.get(start).getX() + points.get(end).getX()) / 2;
@@ -91,11 +90,17 @@ public class ClosestPair {
 
     }
 
-    public double bruteForce(int intervalStart, int intervalEnd) {
+    /**
+     * @param start vart i ArrayListan points loopen skall börja.
+     * @param end vart i ArrayListan points loopen skall sluta.
+     * @return kortaste sträckan mellan noder i intervallet
+     */
+
+    public double baseCase(int start, int end) {
         double delta = Double.MAX_VALUE;
-        for (int i = intervalStart; i < intervalEnd + 1; i++) {
+        for (int i = start; i < end + 1; i++) {
             Point tmp = points.get(i);
-            for (int j = i + 1; j < intervalEnd + 1; j++) {
+            for (int j = i + 1; j < end + 1; j++) {
                 double newDelta = getDistance(tmp, points.get(j));
                 if (newDelta < delta) {
                     delta = newDelta;
@@ -111,13 +116,6 @@ public class ClosestPair {
             s += "[ " + p.x + " " + p.y + " ]" + "\n";
         }
         return s;
-    }
-
-    public void printStrip(List<Point> list) {
-        int count = 0;
-        for (Point p: list)
-            System.out.println(++count + " "+ p.toString());
-        System.out.println("\n");
     }
 
 
