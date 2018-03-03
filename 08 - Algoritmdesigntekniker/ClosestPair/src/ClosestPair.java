@@ -39,10 +39,13 @@ public class ClosestPair {
         return findClosestPair();
     }
 
+    public void clearList() {
+        points.clear();
+    }
+
 
     /**
-     * @return -1 if list is empty or <= 1, else returns the distance
-     * between the closest pairs.
+     * @return -1 om listan är <= 1, annars returneras kortaste sträckan mellan två noder i listan..
      */
     public double findClosestPair() {
         if (points.size() <= 1)
@@ -62,22 +65,23 @@ public class ClosestPair {
             double right = findClosestPair(middle + 1, end);
             double minDelta = left < right ? left : right;
 
-            ArrayList<Point> strip = new ArrayList<>();
+            ArrayList<Point> closePoints = new ArrayList<>();
+
             for (Point p : points) {
                 if (p.getX() > (midX - minDelta) && p.getX() < (midX + minDelta))
-                    strip.add(p);
+                    closePoints.add(p);
             }
 
-            Collections.sort(strip, new CompareY());
+            closePoints.sort(new CompareY());
             /*
              * Algoritm använd från s.453 i M.Weiss Datastructures and Algorithm Analysis in Java.
              */
-            for (int i = 0; i < strip.size(); i++) {
-                for (int j = i + 1; j < strip.size(); j++)
-                    if ((strip.get(j).y - strip.get(i).y) > minDelta) {
+            for (int i = 0; i < closePoints.size(); i++) {
+                for (int j = i + 1; j < closePoints.size(); j++)
+                    if ((closePoints.get(j).y - closePoints.get(i).y) > minDelta) {
                         break;
                     } else {
-                        double tmp = getDistance(strip.get(i), strip.get(j));
+                        double tmp = getDistance(closePoints.get(i), closePoints.get(j));
                         if (tmp < minDelta) {
                             minDelta = tmp;
                         }
@@ -98,9 +102,9 @@ public class ClosestPair {
     public double baseCase(int start, int end) {
         double delta = Double.MAX_VALUE;
         for (int i = start; i < end + 1; i++) {
-            Point tmp = points.get(i);
+            Point temp = points.get(i);
             for (int j = i + 1; j < end + 1; j++) {
-                double newDelta = getDistance(tmp, points.get(j));
+                double newDelta = getDistance(temp, points.get(j));
                 if (newDelta < delta) {
                     delta = newDelta;
                 }
@@ -116,6 +120,8 @@ public class ClosestPair {
         }
         return s;
     }
+
+
 
 
     private class CompareX implements Comparator<Point> {
