@@ -1,11 +1,5 @@
 package alda.tree;
 
-/**
- *
- * Oscar Törnquist  - osta3589
- * Emil Rosell      - emro9957
- *
- */
 
 /**
  * Detta är den enda av de tre klasserna ni ska göra några ändringar i. (Om ni
@@ -21,6 +15,15 @@ package alda.tree;
  * @param <T>
  * @author henrikbe
  */
+
+
+/**
+ * Klass som representerar en nod i ett binärt sökträd. Klassen använder sig av generiska typer.
+ *
+ * @param <T>
+ * @author Emil Rosell      - emro9957
+ * @author Oscar Törnquist  - osta3589
+ */
 public class BinarySearchTreeNode<T extends Comparable<T>> {
 
     private T data;
@@ -30,6 +33,17 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     public BinarySearchTreeNode(T data) {
         this.data = data;
     }
+
+
+    /**
+     * Denna metod lägger till data som ett barn till den aktuella noden.
+     * Om indatat är mindre än den aktuella datan så läggs det till i en ny barn-nod
+     * till vänster om den aktuella noden. Om datan är större än den aktuella datan
+     * läggs det till i en ny barn-nod till höger om den aktuella noden.
+     *
+     * @param data, indata som sparas i varje nod.
+     * @return true om det läggs till en ny nod, annars false.
+     */
 
     public boolean add(T data) {
         if (data != null && data.compareTo(this.data) > 0) {
@@ -49,9 +63,21 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
         return false;
     }
 
+    /**
+     *
+     * @return returnerar returvärdet från privat metod.
+     */
+
     private T findMin() {
         return findMin(this);
     }
+
+    /**
+     * Jobbar sig nedåt till vänster i trädet via rekursiva anrop.
+     *
+     * @param n aktuell nod som skall jämföras.
+     * @return minsta värdet i trädet, det som är längst ner till vänster.
+     */
 
     private T findMin(BinarySearchTreeNode<T> n) {
         if(n == null)
