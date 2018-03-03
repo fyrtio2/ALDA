@@ -60,16 +60,15 @@ public class ClosestPair {
 
             double left = findClosestPair(start, middle);
             double right = findClosestPair(middle + 1, end);
-            ArrayList<Point> strip = new ArrayList<>();
             double minDelta = left < right ? left : right;
 
+            ArrayList<Point> strip = new ArrayList<>();
             for (Point p : points) {
                 if (p.getX() > (midX - minDelta) && p.getX() < (midX + minDelta))
                     strip.add(p);
             }
 
             Collections.sort(strip, new CompareY());
-
             /*
              * Algoritm använd från s.453 i M.Weiss Datastructures and Algorithm Analysis in Java.
              */
