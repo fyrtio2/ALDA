@@ -59,7 +59,7 @@ Algoritmen räknar räknar ut och returnerar den kortaste sträckan mellan två 
 Metoden tar för givet att användaren av algoritmen vet att det behövs läggas till punkter att jämföra emellan, vilket denna metod är till för. Den börjar med att kolla om självaste punkten som ska läggas till redan finns i listan och om den gör det så skrivs ett medellande ut i konsolen för att visa att det inte går att lägga till likadana punkter i listan. Anledningen är för att vi vill visa att algoritmen är funktionell och om det finns två punkter med samma värde får vi resultatet $0.0$ vilket är mer eller mindre ett riktigt tråkigt resultat.
 Om punkten inte finns i listan så läggs den till i listan \textit{points}.
 
-\subsection{double getDistance(Point a, Point b)} 
+\subsection{double distance(Point a, Point b)} 
 Denna metod returnerar avståndet mellan punkt $a$ och punkt $b$ med hjälp av pythagoras sats. 
 
 \subsection{double findClosestPair(List<Point> list)} 
@@ -67,7 +67,7 @@ Då vi vill underlätta för testning så har vi skapat en metod som tar en list
 Metoden returnerar en Double.
 
 \subsection{double findClosestPair()} 
-Metoden börjar med att kontrollera ifall det finns något att använda sig av i ClosestPair algoritmen. Om listans storlek är mindre eller lika med 1 så returnerar metoden -1 då det inte finns några punkter att jämföra med. Annars så sorterar den listan efter X-värden för att sedan returnera värdet från den privata metoden \textit{findClosestPair(int start, int end)}.
+Metoden börjar med att kontrollera ifall det finns något att använda sig av i ClosestPair algoritmen. Om listans storlek är mindre eller lika med 1 så returnerar metoden -1 då det inte finns några punkter att jämföra med. Varför vi använde just värdet -1 grundar sig i att vi returnerar det absoluta värdet av algoritmen, det vill säga att vi garanterar ett positivt resultat. Annars så sorterar den listan efter X-värden för att sedan returnera värdet från den privata metoden \textit{findClosestPair(int start, int end)}.
 
 \subsection{private double findClosestPair(int start, int end)} 
 Hjärtat i hela klassen.
