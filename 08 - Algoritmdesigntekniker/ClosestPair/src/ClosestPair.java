@@ -33,6 +33,10 @@ public class ClosestPair {
         return Math.sqrt(Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2)); //Hypotenusan av Point a och Point b
     }
 
+    public int getSize(){
+        return points.size();
+    }
+
 
     public double findClosestPair(List<Point> list) {
         points.addAll(list); //kopierar list till ArrayListan points.
@@ -54,7 +58,7 @@ public class ClosestPair {
         return findClosestPair(0, points.size() - 1);
     }
 
-    private double findClosestPair(int start, int end) {
+    public double findClosestPair(int start, int end) {
         if (end - start <= 2) {
             return baseCase(start, end);
         } else {
