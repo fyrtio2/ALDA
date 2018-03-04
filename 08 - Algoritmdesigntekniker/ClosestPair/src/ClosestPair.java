@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class ClosestPair {
         points.add(p);
     }
 
-    private double getDistance(Point a, Point b) {
+    private double distance(Point a, Point b) {
         return Math.sqrt(Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2)); //Hypotenusan av Point a och Point b
     }
 
@@ -55,10 +54,10 @@ public class ClosestPair {
         if (points.size() <= 1)
             return -1;
         points.sort(new CompareX());
-        return findClosestPair(0, points.size() - 1);
+        return Math.abs(findClosestPair(0, points.size() - 1));
     }
 
-    public double findClosestPair(int start, int end) {
+    private double findClosestPair(int start, int end) {
         if (end - start <= 2) {
             return baseCase(start, end);
         } else {
@@ -85,7 +84,7 @@ public class ClosestPair {
                     if ((closePoints.get(j).y - closePoints.get(i).y) > minDelta) {
                         break;
                     } else {
-                        double tmp = getDistance(closePoints.get(i), closePoints.get(j));
+                        double tmp = distance(closePoints.get(i), closePoints.get(j));
                         if (tmp < minDelta) {
                             minDelta = tmp;
                         }
@@ -108,7 +107,7 @@ public class ClosestPair {
         for (int i = start; i < end + 1; i++) {
             Point temp = points.get(i);
             for (int j = i + 1; j < end + 1; j++) {
-                double newDelta = getDistance(temp, points.get(j));
+                double newDelta = distance(temp, points.get(j));
                 if (newDelta < delta) {
                     delta = newDelta;
                 }
