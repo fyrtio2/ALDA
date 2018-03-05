@@ -77,7 +77,7 @@ Självaste metoden tar i två argument, en int som markerar startpunkten och en 
 Då har vi delat upp listan i två delar som via det rekursiva anropet delar upp varje del på häflten tills det är mindre eller lika med 2 element kvar som testas. Sen när listan är uppdelat i höger och vänster kontrolleras punkterna runtomkring för att se om det är nåt intill halveringsgränsen som är kortare än det hittills kortaste avståndet. Med hjälp av M. Weiss pseudokod på sidan 453 kan vi se om det finns några punkter nära som är kortare än det hittills kortaste resultatet.
 Därefter returneras resultatet tills de rekursiva anropen är över.
 
-\section{private double baseCase(int start, int end)} 
+\subsection{double baseCase(int start, int end)} 
 Denna metod används endast när det är mindre eller lika med 2 element kvar  och itererar över listan med hjälp av startvärdet och slutvärdet. Sen jämförs värdet på variabeln delta med ett nytt värde som kontrolleras ifall det är mindre än det gamla värdet. Om det stämmer så deklareras variabeln delta till det nya värdet och loopen fortsätter tills det når slutvärdet.
 Därefter returneras värdet tillbaka till den rekursiva metoden.
 
