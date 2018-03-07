@@ -36,15 +36,11 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
 
 
     /**
-     * Denna metod lägger till data som ett barn till den aktuella noden.
-     * Om indatat är mindre än den aktuella datan så läggs det till i en ny barn-nod
-     * till vänster om den aktuella noden. Om datan är större än den aktuella datan
-     * läggs det till i en ny barn-nod till höger om den aktuella noden.
+     * Metoden lägger till indatat i trädet som antingen ett höger eller vänsterbarn.
      *
      * @param data, indata som sparas i varje nod.
-     * @return true om det läggs till en ny nod, annars false.
+     * @return true om det läggs till en ny nod, annars false om indatans värde är lika mycket som den aktuell nod.
      */
-
 
     public boolean add(T data) {
         if (data != null && data.compareTo(this.data) > 0) {
@@ -77,7 +73,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
      * Jobbar sig nedåt till vänster i trädet via rekursiva anrop.
      *
      * @param n aktuell nod som skall jämföras.
-     * @return minsta värdet i trädet, det som är längst ner till vänster.
+     * @return det minsta värdet i trädet om indatan hittas, annars null om indatan är null eller inte finns.
      */
 
     private T findMin(BinarySearchTreeNode<T> n) {
@@ -123,7 +119,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     /**
      * kontroller om trädet innehåller ett viss data
      * @param data
-     * @return
+     * @return true om indatan finns, annars false om den är null eller inte finns.
      */
 
     public boolean contains(T data) {
@@ -152,6 +148,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
             return size(n.left) + size(n.right) + 1;
         }
     }
+
     public int depth() {
         return depth(this) -1;
     }
