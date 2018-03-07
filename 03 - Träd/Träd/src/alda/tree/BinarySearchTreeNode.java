@@ -26,9 +26,9 @@ package alda.tree;
  */
 public class BinarySearchTreeNode<T extends Comparable<T>> {
 
-    private T data;
-    private BinarySearchTreeNode<T> left;
-    private BinarySearchTreeNode<T> right;
+    private T data; //indatan
+    private BinarySearchTreeNode<T> left;  // "next"
+    private BinarySearchTreeNode<T> right;  // "next"
 
     public BinarySearchTreeNode(T data) {
         this.data = data;
@@ -44,6 +44,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
      * @param data, indata som sparas i varje nod.
      * @return true om det läggs till en ny nod, annars false.
      */
+
 
     public boolean add(T data) {
         if (data != null && data.compareTo(this.data) > 0) {
@@ -92,6 +93,13 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
 
     }
 
+    /**
+     * Tar bort element ur trädet
+     * @param n noden som jämförs
+     * @param data värdet på elentet som ska tas bort
+     * @return noden som tas bort. Returnerar null om noden inte finns seller om indatan är null.
+     */
+
     private BinarySearchTreeNode<T> remove(BinarySearchTreeNode<T> n, T data) {
         if (n == null) {
             return null;
@@ -111,6 +119,12 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
         }
         return n;
     }
+
+    /**
+     * kontroller om trädet innehåller ett viss data
+     * @param data
+     * @return
+     */
 
     public boolean contains(T data) {
        if (data == null) {
