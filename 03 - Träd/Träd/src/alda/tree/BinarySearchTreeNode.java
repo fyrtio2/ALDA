@@ -38,15 +38,15 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     /**
      * Metoden lägger till indatat i trädet som antingen ett höger eller vänsterbarn.
      *
-     * @param data, indata som sparas i varje nod.
+     * @param data, indata som ska sparas i en ny nod.
      * @return true om det läggs till en ny nod, annars false om indatans värde är lika mycket som den aktuell nod.
      */
 
     public boolean add(T data) {
         if (data != null && data.compareTo(this.data) > 0) {
             if (right == null) {
-            right = new BinarySearchTreeNode<>(data);
-            return true;
+                right = new BinarySearchTreeNode<>(data);
+                return true;
             }
             return right.add(data);
         } else if (data != null && data.compareTo(this.data) < 0) {
@@ -90,7 +90,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     }
 
     /**
-     * Tar bort element ur trädet
+     * Tar bort element ur trädet.
      * @param n noden som jämförs
      * @param data värdet på elentet som ska tas bort
      * @return noden som tas bort. Returnerar null om noden inte finns seller om indatan är null.
@@ -117,7 +117,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     }
 
     /**
-     * kontroller om trädet innehåller ett viss data
+     * kontrollerar om trädet innehåller ett viss data
      * @param data
      * @return true om indatan finns, annars false om den är null eller inte finns.
      */
