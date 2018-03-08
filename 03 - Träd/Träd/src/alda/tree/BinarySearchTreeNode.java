@@ -19,6 +19,7 @@ package alda.tree;
 
 /**
  * Klass som representerar en nod i ett binärt sökträd. Klassen använder sig av generiska typer.
+ * Dubbletter är ej tillåtet.
  *
  * @param <T>
  * @author Emil Rosell      - emro9957
