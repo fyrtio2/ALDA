@@ -62,14 +62,6 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     }
 
     /**
-     * @return returnerar returvärdet från privat metod.
-     */
-
-    private T findMin() {
-        return findMin(this);
-    }
-
-    /**
      * Jobbar sig nedåt till vänster i trädet via rekursiva anrop.
      *
      * @param n aktuell nod som skall jämföras.
