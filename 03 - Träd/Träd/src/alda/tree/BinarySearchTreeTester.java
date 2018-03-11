@@ -116,7 +116,7 @@ public class BinarySearchTreeTester {
     }
 
     @Test
-    public void testOtherType(){
+    public void testOtherType() {
         BinarySearchTree<String> stringTree = new BinarySearchTree<String>();
         stringTree.add("D");
         stringTree.add("A");
@@ -127,36 +127,5 @@ public class BinarySearchTreeTester {
         assertTrue(stringTree.contains("C"));
         stringTree.remove("C");
         assertFalse(stringTree.contains("C"));
-    }
-
-    @Test
-    public void testInts() {
-        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
-        tree.add(10);
-        tree.add(9);
-        tree.add(8);
-        tree.add(7);
-        tree.add(6);
-        tree.add(5);
-        tree.add(4);
-        tree.add(3);
-        tree.add(2);
-        tree.add(1);
-        tree.add(11);
-        tree.add(12);
-        tree.add(13);
-        tree.add(14);
-        tree.add(15);
-        tree.add(16);
-        tree.add(17);
-        tree.add(18);
-        tree.add(19);
-        tree.add(20);
-        assertEquals(20, tree.size());
-        tree.remove(10);
-        assertEquals(19, tree.size());
-        assertFalse(tree.contains(10));
-
-
     }
 }

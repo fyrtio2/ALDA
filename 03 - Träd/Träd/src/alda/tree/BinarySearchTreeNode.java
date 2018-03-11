@@ -62,7 +62,6 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     }
 
     /**
-     *
      * @return returnerar returvärdet från privat metod.
      */
 
@@ -78,9 +77,9 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
      */
 
     private T findMin(BinarySearchTreeNode<T> n) {
-        if(n == null)
+        if (n == null)
             return null;
-        else if(n.left == null)
+        else if (n.left == null)
             return n.data;
         return findMin(n.left);
     }
@@ -91,7 +90,8 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     }
 
     /**
-     * Tar bort element ur trädet.
+     * Hjälpmetod som tar bort element ur trädet.
+     *
      * @param n noden som jämförs
      * @param data värdet på elentet som ska tas bort
      * @return noden som tas bort. Returnerar null om noden inte finns seller om indatan är null.
@@ -119,28 +119,30 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
 
     /**
      * kontrollerar om trädet innehåller ett viss data
-     * @param data
+     *
+     * @param data, indata som skall sökas efter.
      * @return true om indatan finns, annars false om den är null eller inte finns.
      */
 
     public boolean contains(T data) {
-       if (data == null) {
-           return false;
-       }
+        if (data == null) {
+            return false;
+        }
 
-       if (data.compareTo(this.data) == 0) {
-           return true;
-       } else if (right != null && data.compareTo(this.data) > 0) {
-           return right.contains(data);
-       } else if (left != null && data.compareTo(this.data) < 0) {
-           return left.contains(data);
-       }
-       return false;
+        if (data.compareTo(this.data) == 0) {
+            return true;
+        } else if (right != null && data.compareTo(this.data) > 0) {
+            return right.contains(data);
+        } else if (left != null && data.compareTo(this.data) < 0) {
+            return left.contains(data);
+        }
+        return false;
     }
 
     public int size() {
         return size(this);
     }
+
 
     private int size(BinarySearchTreeNode<T> n) {
         if (n == null) {
@@ -151,7 +153,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     }
 
     public int depth() {
-        return depth(this) -1;
+        return depth(this) - 1;
     }
 
     private int depth(BinarySearchTreeNode<T> n) {
@@ -165,8 +167,8 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
 
     public String toString() {
         StringBuilder str = new StringBuilder();
-        toString(str,this);
-        return str.toString().substring(0, str.length()-2);
+        toString(str, this);
+        return str.toString().substring(0, str.length() - 2);
     }
 
     private String toString(StringBuilder str, BinarySearchTreeNode<T> n) {
@@ -177,7 +179,9 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
         str.append(n.data + ", ");
         str.append(toString(str, n.right));
         return "";
+    }
 
-
+    public T getData() {
+        return data;
     }
 }

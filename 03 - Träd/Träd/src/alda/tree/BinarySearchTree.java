@@ -43,6 +43,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return root.size();
     }
 
+    public BinarySearchTreeNode<T> getRoot() {
+        return root;
+    }
+
     public int depth() {
         if (root == null)
             return -1;
