@@ -39,7 +39,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     /**
      * Metoden lägger till indatat i trädet som antingen ett höger eller vänsterbarn.
      *
-     * @param data, indata som ska sparas i en ny nod.
+     * @param data indata som ska sparas i en ny nod.
      * @return true om det läggs till en ny nod, annars false om indatans värde är lika mycket som den aktuell nod.
      */
 
@@ -120,7 +120,7 @@ public class BinarySearchTreeNode<T extends Comparable<T>> {
     /**
      * kontrollerar om trädet innehåller ett viss data
      *
-     * @param data, indata som skall sökas efter.
+     * @param data indata som skall sökas efter.
      * @return true om indatan finns, annars false om den är null eller inte finns.
      */
 
